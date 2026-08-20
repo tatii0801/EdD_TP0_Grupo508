@@ -1,3 +1,5 @@
+package src.main.java.tp0;
+
 // Programa que simula el registro de temperaturas de un sensor durante un dia.
 
 // Importamos Scanner para ingresar datos por teclado.

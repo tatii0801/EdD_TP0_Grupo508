@@ -1,3 +1,5 @@
+package src.main.java.tp0;
+
 // Programa que calcula el salario neto semanal de un trabajador.
 
 // Importamos la clase Scanner para leer datos ingresados por el usuario.

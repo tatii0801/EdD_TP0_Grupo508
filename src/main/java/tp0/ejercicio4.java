@@ -1,3 +1,5 @@
+package src.main.java.tp0;
+
 // Programa que funciona como una calculadora de areas de figuras geometricas.
 
 // Importamos Scanner para ingresar datos por teclado.
