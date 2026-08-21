@@ -53,6 +53,26 @@ import tp1_by_Santy.classes.Cilindro;
  * d) ¿Qué ventajas tiene implementar los cálculos de volumen y área como
  * métodos en la clase Cilindro en
  * lugar de hacer las operaciones matemáticas directamente en el método main?
+ * 
+ * Respuestas:
+ * 
+ * a) Entradas: radio y altura del cilindro. Salidas: volumen y área de la superficie total del cilindro. La 
+ * información que debe mantenerse almacenada en el objeto durante toda la ejecución son los atributos radio y
+ * altura, mientras que el volumen y el área son información temporal calculada a partir de esos atributos.
+ * 
+ * b) Si el usuario intenta ingresar un radio o altura igual a cero o a un valor negativo, el programa solicita
+ * nuevamente el ingreso del valor hasta que se ingrese un valor estrictamente positivo. Esto garantiza 
+ * que el objeto Cilindro nunca contenga dimensiones inválidas, ya que los setters solo se llaman con valores válidos.
+ * 
+ * c) Al probar el comportamiento del objeto Cilindro con valores positivos, el programa calcula correctamente el
+ * volumen y el área. Si se ingresan valores negativos o cero, el programa solicita nuevamente
+ * el ingreso hasta que se ingrese un valor válido. Cuando el radio y la altura son iguales, el cálculo de volumen y área 
+ * sigue siendo correcto.
+ * 
+ * d) Implementar los cálculos de volumen y área como métodos en la clase Cilindro permite encapsular la lógica relacionada 
+ * con el cilindro dentro de la propia clase, promoviendo la reutilización del código y facilitando el mantenimiento. Además, mejora 
+ * la legibilidad del código en el método main, ya que se delega la responsabilidad de los cálculos a la clase Cilindro.
+ * 
  */
 
 public class ejercicio1 {
