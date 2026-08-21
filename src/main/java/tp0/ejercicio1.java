@@ -1,4 +1,4 @@
-package src.main.java.tp0;
+package tp0;
 
 // Programa que calcula el salario neto semanal de un trabajador.
 

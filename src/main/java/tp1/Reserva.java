@@ -1,4 +1,4 @@
-package src.main.java.tp1;
+package tp1;
 
 // Clase que representa una reserva de hotel.
 
@@ -124,4 +124,9 @@ public class Reserva {
                 + "\nCheck-in: " + fechaCheckIn
                 + "\nCheck-out: " + fechaCheckOut;
     }
+
+    public static void main(String[] argv) {
+        System.out.println("AAA");
+    }
+
 }

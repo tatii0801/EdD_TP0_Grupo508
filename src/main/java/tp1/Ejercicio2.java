@@ -1,4 +1,4 @@
-package src.main.java.tp1;
+package tp1;
 
 // Programa principal para realizar operaciones bancarias.
 

@@ -1,4 +1,4 @@
-package src.main.java.tp1;
+package tp1;
 
 // Clase que representa la bateria de un dispositivo.
 
