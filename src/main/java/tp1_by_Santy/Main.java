@@ -6,8 +6,8 @@ public class Main {
         
         // --- DESCOMENTA LA LÍNEA DEL EJERCICIO QUE QUIERAS EJECUTAR ---
         
-        ejercicio1.main(args);
-        // ejercicio2.ejecutar();
+        //ejercicio1.main(args);
+        ejercicio2.main(args);
 
     }
 }
