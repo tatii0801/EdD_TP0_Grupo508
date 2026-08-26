@@ -1,4 +1,4 @@
-package src.main.java.tp0;
+package tp0;
 
 // Programa que trabaja con cadenas de texto correspondientes
 // al nombre de una ciudad y un pais.

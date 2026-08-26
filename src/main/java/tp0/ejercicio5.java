@@ -1,4 +1,4 @@
-package src.main.java.tp0;
+package tp0;
 
 // Programa que genera numeros aleatorios y busca aquellos
 // que sean divisibles por un determinado divisor.
