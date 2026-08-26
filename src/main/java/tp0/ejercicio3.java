@@ -1,4 +1,4 @@
-package src.main.java.tp0;
+package tp0;
 
 // Programa que calcula el porcentaje de rendimiento de un estudiante.
 

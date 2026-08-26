@@ -2,7 +2,7 @@
 
 // la siguiente línea de código indica el paquete al que pertenece la clase TP0_01
 // El paquete es una forma de organizar las clases en Java y evitar conflictos de nombres.
-package src.main.java.tp0;
+package tp0;
 
 
 // Importamos la clase Scanner para leer la entrada del usuario

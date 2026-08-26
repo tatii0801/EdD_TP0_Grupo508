@@ -1,4 +1,4 @@
-package src.main.java.tp0;
+package tp0;
 
 // Programa que funciona como una calculadora de areas de figuras geometricas.
 

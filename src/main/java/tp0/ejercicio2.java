@@ -1,4 +1,4 @@
-package src.main.java.tp0;
+package tp0;
 
 // Programa que simula el registro de temperaturas de un sensor durante un dia.
 
