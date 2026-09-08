@@ -4,7 +4,7 @@ public class Main {
   public static void main(String[] args) {
   
         //StackChar miPila = new StackChar();
-        StackGenerica<Character> miPila = new StackGenerica();
+        StackGenerica<Character> miPila = new StackGenerica<>();
 
         miPila.push('a');
         miPila.push('b');

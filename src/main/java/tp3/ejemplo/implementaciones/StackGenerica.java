@@ -6,7 +6,8 @@ public class StackGenerica<ELEMENT> {
     private ELEMENT [] datos;
     private int cuenta;
 
-    public StackGenerica() {
+    @SuppressWarnings("unchecked")
+	public StackGenerica() {
         this.datos = (ELEMENT []) new Object[this.maximoTamanio];
         this.cuenta = 0;
     }
