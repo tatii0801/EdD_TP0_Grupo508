@@ -1,4 +1,4 @@
-package implementaciones;
+package tp3.ejemplo.implementaciones;
 
 public class StackChar {
 
@@ -13,7 +13,7 @@ public class StackChar {
 
     public void push(char elemento) {
         if (this.isFull()) {
-            throw new RuntimeException("La pila está llena...");
+            throw new RuntimeException("La pila estï¿½ llena...");
         }
         this.datos[this.cuenta] = elemento;
         ++this.cuenta;
@@ -21,7 +21,7 @@ public class StackChar {
 
     public char pop() {
         if (this.isEmpty()) {
-            throw new RuntimeException("La pila está vacía...");
+            throw new RuntimeException("La pila estï¿½ vacï¿½a...");
         }
         --this.cuenta;
         return this.datos[this.cuenta];
@@ -29,7 +29,7 @@ public class StackChar {
 
     public char peek() {
         if (this.isEmpty()) {
-            throw new RuntimeException("La pila está vacía...");
+            throw new RuntimeException("La pila estï¿½ vacï¿½a...");
         }
         return this.datos[this.cuenta - 1];
     }
