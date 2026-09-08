@@ -1,12 +1,69 @@
-# Trabajo Práctico N° 4 - Colas (Queue)
-Resolución de los ejercicios del TP.
+# EdD_Grupo508 - Estructura de Datos - TP4 
 
-D I S T R I B U C I Ó N :
-Ejercicio 1 resuelto por: 
-Ejercicio 2 resuelto por: Tatiana Valeria Nieva
-Ejercicio 3 resuelto por: Nicolas Daniel Anachuri
-Ejercicio 4 resuelto por: Romina Ester Santos
-Ejercicio 5 resuelto por: Santiago Tintilay
-Ejercicio 6 resuelto por:
-Ejercicio 7 resuelto por:
-Ejercicio 8 resuelto por:
+## 📝 Trabajo Práctico N° 4 - Colas (Queue)
+
+Trabajo Práctico desarrollado para la materia **Estructura de Datos**, correspondiente al ciclo 2026 de las carreras **Ingeniería Informática y Licenciatura en Sistemas** de la **Facultad de Ingeniería - Universidad Nacional de Jujuy**.
+
+El trabajo tiene como objetivo aplicar el Tipo de Dato Abstracto (TDA) **Cola (Queue)** utilizando el lenguaje **Java**, respetando el principio FIFO (First In, First Out) y las reglas de procesamiento sin alterar la estructura original de los datos.
+
+### Java - Queue - LinkedList - Estructuras de Control - Git - GitHub
+
+---
+
+# 👥 Integrantes
+
+**C5 - Grupo 508**
+
+- Nicolas Daniel Anachuri
+- Gaston Yamil Gregorio
+- Tatiana Valeria Nieva
+- Romina Ester Santos
+- Santiago Tintilay
+- Estefania Alejandra Trujillo
+
+---
+
+# 🛠️ Tecnologías Utilizadas
+
+- Java
+- Queue (TDA)
+- LinkedList
+- Scanner
+- Maven
+- Visual Studio Code
+- Git
+- GitHub
+
+
+---
+
+# 📂 Estructura del Proyecto
+
+```text
+src/
+│
+└── main/
+    └── java/
+        │
+        ├── tp4/
+        │   ├── Ticket.java
+        │   └── Ejercicio4.java
+        │
+        ├── tp0/
+        ├── tp1/
+        ├── tp2/
+        └── tp3/
+
+pom.xml
+README.md
+```
+---
+# 📜 About
+
+• Trabajo Práctico N° 4 - Colas (Queue)
+• Materia: Estructura de Datos
+• Carreras: Ingeniería Informática - Licenciatura en Sistemas
+• Facultad: Facultad de Ingeniería - Universidad Nacional de Jujuy
+• Comisión: C5
+• Grupo: 508
+• Ciclo: 2026
