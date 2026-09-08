@@ -1,6 +1,6 @@
-# EdD_TP0_Grupo508 - Estructura de Datos - TP4
+# EdD_Grupo508 - Estructura de Datos - TP4 
 
-## Trabajo Práctico N° 4 - Colas (Queue)
+## 📝 Trabajo Práctico N° 4 - Colas (Queue)
 
 Trabajo Práctico desarrollado para la materia **Estructura de Datos**, correspondiente al ciclo 2026 de las carreras **Ingeniería Informática y Licenciatura en Sistemas** de la **Facultad de Ingeniería - Universidad Nacional de Jujuy**.
 
@@ -10,7 +10,7 @@ El trabajo tiene como objetivo aplicar el Tipo de Dato Abstracto (TDA) **Cola (Q
 
 ---
 
-# Integrantes
+# 👥 Integrantes
 
 **C5 - Grupo 508**
 
@@ -23,7 +23,7 @@ El trabajo tiene como objetivo aplicar el Tipo de Dato Abstracto (TDA) **Cola (Q
 
 ---
 
-# Tecnologías Utilizadas
+# 🛠️ Tecnologías Utilizadas
 
 - Java
 - Queue (TDA)
@@ -34,9 +34,10 @@ El trabajo tiene como objetivo aplicar el Tipo de Dato Abstracto (TDA) **Cola (Q
 - Git
 - GitHub
 
+
 ---
 
-# Estructura del Proyecto
+# 📂 Estructura del Proyecto
 
 ```text
 src/
@@ -55,12 +56,14 @@ src/
 
 pom.xml
 README.md
+```
+---
+# 📜 About
 
-About
-Trabajo Práctico N° 4 - Colas (Queue)
-Materia: Estructura de Datos
-Carreras: Ingeniería Informática - Licenciatura en Sistemas
-Facultad: Facultad de Ingeniería - Universidad Nacional de Jujuy
-Ciclo: 2026
-Comisión: C5
-Grupo: 508
+• Trabajo Práctico N° 4 - Colas (Queue)
+• Materia: Estructura de Datos
+• Carreras: Ingeniería Informática - Licenciatura en Sistemas
+• Facultad: Facultad de Ingeniería - Universidad Nacional de Jujuy
+• Comisión: C5
+• Grupo: 508
+• Ciclo: 2026
