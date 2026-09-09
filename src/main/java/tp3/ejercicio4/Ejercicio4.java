@@ -26,6 +26,52 @@ public class Ejercicio4 {
         System.out.println("\n--- ESTADO INICIAL DE LA PILA DE TAREAS ---");
         mostrarPila(pilaTareas);
 
+        // --- Opcion: Ingreso de Nueva Tarea ---
+        System.out.print("\n¿Desea agregar una nueva tarea a la pila? (s/n): ");
+        String respuesta = scanner.nextLine().trim();
+        
+        if (respuesta.equalsIgnoreCase("s")) {
+            // 1. Validación para el ID (no puede estar vacío)
+            String idUsuario = "";
+            while (idUsuario.isEmpty()) {
+                System.out.print("Ingrese el ID de la nueva tarea (Ej: T06): ");
+                idUsuario = scanner.nextLine().trim();
+                if (idUsuario.isEmpty()) {
+                    System.out.println("❌ El ID no puede estar vacío. Intente nuevamente.");
+                }
+            }
+            
+            // 2. Validación para la Prioridad (insiste hasta que sea Alta, Media o Baja)
+            String prioridadUsuario = "";
+            while (!prioridadUsuario.equalsIgnoreCase("Alta") && 
+                   !prioridadUsuario.equalsIgnoreCase("Media") && 
+                   !prioridadUsuario.equalsIgnoreCase("Baja")) {
+                System.out.print("Ingrese la prioridad (Alta, Media, Baja): ");
+                prioridadUsuario = scanner.nextLine().trim();
+                if (!prioridadUsuario.equalsIgnoreCase("Alta") && 
+                    !prioridadUsuario.equalsIgnoreCase("Media") && 
+                    !prioridadUsuario.equalsIgnoreCase("Baja")) {
+                    System.out.println("❌ Prioridad inválida. Debe escribir exactamente: Alta, Media o Baja.");
+                }
+            }
+            
+            // 3. Validación para la Descripción (no puede estar vacía)
+            String descUsuario = "";
+            while (descUsuario.isEmpty()) {
+                System.out.print("Ingrese la descripción de la tarea: ");
+                descUsuario = scanner.nextLine().trim();
+                if (descUsuario.isEmpty()) {
+                    System.out.println("❌ La descripción no puede estar vacía.");
+                }
+            }
+            
+            // Agregamos la tarea validada a la pila
+            agregarTarea(pilaTareas, new Tarea(idUsuario, prioridadUsuario, descUsuario));
+            
+            System.out.println("\n--- ESTADO DE LA PILA TRAS AGREGAR LA NUEVA TAREA ---");
+            mostrarPila(pilaTareas);
+        }
+
         // g) Ejecutamos los métodos solicitados por la consigna:
 
         // 1. Contar cuántas tareas de prioridad "Alta" hay
