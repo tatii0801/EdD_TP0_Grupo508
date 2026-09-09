@@ -9,7 +9,7 @@ public class Ejercicio4 {
         Scanner scanner = new Scanner(System.in);
         
         // Creamos nuestra pila principal de tareas
-        Stack<Tarea> pilaTareas = new Stack<>();
+        Stack<Tarea> pilaTareas = new Stack<>(); // Stack ahhhh!
 
         System.out.println("\n=================================================");
         System.out.println("   Ejercicio N°4 - Gestión de Tareas con Pilas");
@@ -206,4 +206,27 @@ public class Ejercicio4 {
             System.out.println("  -> " + copiaTemp.pop());
         }
     }
+/* ====================================================================
+     * RESPUESTAS A LAS PREGUNTAS SOBRE EL PROBLEMA:
+     * 
+     * a) ¿Se garantiza el orden al usar pilas auxiliares?
+     *    - Sí. Se produce un "doble reverso" que restituye el orden original.
+     *    -> Se ve reflejado en los métodos como buscarTareaPorId() y contarTareasAlta(),
+     *       en los bucles finales donde se pasan los elementos de aux2 a la original.
+     * 
+     * b) Ventajas y desventajas de usar un ArrayList:
+     *    - Ventaja: Permite buscar fácilmente mediante índices (.get()).
+     *    - Desventaja: Rompe con el principio estricto del TDA Pila (LIFO).
+     * 
+     * c) ¿Qué pasa al eliminar prioridades inexistentes o vacías?
+     *    - Si la prioridad no existe: La pila queda exactamente igual.
+     *    - Si todas coinciden: La pila queda completamente vacía.
+     *    -> Se ve reflejado en el método eliminarTareasPorPrioridad().
+     * 
+     * d) ¿Es un error el doble pop() del compañero?
+     *    - Sí. Hacer un pop() en el if y otro adentro hace que se descarten 
+     *      dos elementos por vuelta sin evaluar uno de ellos, perdiendo datos.
+     *    -> Se contrasta con nuestro método eliminarTareasPorPrioridad(), 
+     *       donde usamos un único pop() por ciclo para evaluar de forma segura.
+     * ==================================================================== */
 }
