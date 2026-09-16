@@ -1,7 +1,7 @@
 package tp4.ejercicio4;
 
 public class Ticket {
-    
+
     private int idTicket;
     private String departamento;
     private int nivelUrgencia;

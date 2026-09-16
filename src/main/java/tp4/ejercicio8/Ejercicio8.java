@@ -123,7 +123,6 @@ class Cliente {
     }
 }
 
-
 public class Ejercicio8 {
 
     /*
@@ -137,19 +136,15 @@ public class Ejercicio8 {
         /*
          * Guardamos la cantidad ORIGINAL.
          */
-        int cantidadOriginal =
-                cola.size();
+        int cantidadOriginal = cola.size();
 
         /*
          * Procesamos exactamente los elementos
          * que existían al comienzo.
          */
-        for (int i = 0;
-             i < cantidadOriginal;
-             i++) {
+        for (int i = 0; i < cantidadOriginal; i++) {
 
-            Cliente cliente =
-                    cola.poll();
+            Cliente cliente = cola.poll();
 
             /*
              * Si es mayor o igual a 18,
@@ -169,8 +164,7 @@ public class Ejercicio8 {
 
     public static void main(String[] args) {
 
-        Queue<Cliente> cola =
-                new ArrayDeque<>();
+        Queue<Cliente> cola = new ArrayDeque<>();
 
         /*
          * Cargamos algunos clientes.

@@ -65,7 +65,6 @@ import java.util.Scanner;
  * ============================================================
  */
 
-
 /*
  * Clase ColaCircular.
  *
@@ -164,13 +163,11 @@ class ColaCircular {
      */
     public ColaCircular copiar() {
 
-        ColaCircular copia =
-                new ColaCircular(datos.length);
+        ColaCircular copia = new ColaCircular(datos.length);
 
         for (int i = 0; i < cantidad; i++) {
 
-            int posicion =
-                    (frente + i) % datos.length;
+            int posicion = (frente + i) % datos.length;
 
             copia.encolar(datos[posicion]);
         }
@@ -188,8 +185,7 @@ class ColaCircular {
 
         for (int i = 0; i < cantidad; i++) {
 
-            int posicion =
-                    (frente + i) % datos.length;
+            int posicion = (frente + i) % datos.length;
 
             texto += datos[posicion];
 
@@ -203,7 +199,6 @@ class ColaCircular {
         return texto;
     }
 }
-
 
 public class Ejercicio2 {
 
@@ -224,8 +219,7 @@ public class Ejercicio2 {
             capacidad = teclado.nextInt();
         }
 
-        ColaCircular cola =
-                new ColaCircular(capacidad);
+        ColaCircular cola = new ColaCircular(capacidad);
 
         /*
          * Cargamos la cola hasta completar su capacidad.
@@ -252,11 +246,9 @@ public class Ejercicio2 {
          * Así podemos demostrar que el recorrido de consulta
          * no modifica la cola original.
          */
-        ColaCircular colaProcesar =
-                cola.copiar();
+        ColaCircular colaProcesar = cola.copiar();
 
-        ColaCircular colaColor =
-                new ColaCircular(capacidad);
+        ColaCircular colaColor = new ColaCircular(capacidad);
 
         int descartados = 0;
 
@@ -265,8 +257,7 @@ public class Ejercicio2 {
 
         while (!colaProcesar.estaVacia()) {
 
-            int codigo =
-                    colaProcesar.desencolar();
+            int codigo = colaProcesar.desencolar();
 
             if (codigo % 2 == 0) {
 
@@ -294,8 +285,7 @@ public class Ejercicio2 {
         /*
          * Contamos los documentos pares.
          */
-        int cantidadColor =
-                colaColor.tamanio();
+        int cantidadColor = colaColor.tamanio();
 
         System.out.println(
                 "Cantidad de documentos enviados a color: "
@@ -309,8 +299,7 @@ public class Ejercicio2 {
 
         while (!colaColor.estaVacia()) {
 
-            int codigo =
-                    colaColor.desencolar();
+            int codigo = colaColor.desencolar();
 
             System.out.println(
                     "Imprimiendo documento: " + codigo);

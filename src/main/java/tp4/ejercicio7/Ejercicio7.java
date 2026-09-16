@@ -86,11 +86,9 @@ public class Ejercicio7 {
 
         int contador = 0;
 
-        int tamanioOriginal =
-                cola.size();
+        int tamanioOriginal = cola.size();
 
-        int[] arregloAuxiliar =
-                new int[tamanioOriginal];
+        int[] arregloAuxiliar = new int[tamanioOriginal];
 
         int i = 0;
 
@@ -99,11 +97,9 @@ public class Ejercicio7 {
          */
         while (!cola.isEmpty()) {
 
-            int numero =
-                    cola.remove();
+            int numero = cola.remove();
 
-            arregloAuxiliar[i] =
-                    numero;
+            arregloAuxiliar[i] = numero;
 
             i++;
 
@@ -116,9 +112,7 @@ public class Ejercicio7 {
         /*
          * Restauramos la cola.
          */
-        for (int j = 0;
-             j < tamanioOriginal;
-             j++) {
+        for (int j = 0; j < tamanioOriginal; j++) {
 
             cola.add(
                     arregloAuxiliar[j]);
@@ -139,16 +133,14 @@ public class Ejercicio7 {
 
         int contador = 0;
 
-        Queue<Integer> auxiliar =
-                new ArrayDeque<>();
+        Queue<Integer> auxiliar = new ArrayDeque<>();
 
         /*
          * Pasamos los elementos a la auxiliar.
          */
         while (!cola.isEmpty()) {
 
-            int numero =
-                    cola.remove();
+            int numero = cola.remove();
 
             auxiliar.add(numero);
 
@@ -172,8 +164,7 @@ public class Ejercicio7 {
 
     public static void main(String[] args) {
 
-        Queue<Integer> colaA =
-                new ArrayDeque<>();
+        Queue<Integer> colaA = new ArrayDeque<>();
 
         colaA.add(8);
         colaA.add(3);
@@ -186,17 +177,15 @@ public class Ejercicio7 {
          * Hacemos otra cola para probar
          * la solución B con los mismos datos.
          */
-        Queue<Integer> colaB =
-                new ArrayDeque<>(
-                        colaA);
+        Queue<Integer> colaB = new ArrayDeque<>(
+                colaA);
 
         System.out.println(
                 "Cola original A:");
 
         System.out.println(colaA);
 
-        int paresA =
-                contarParesA(colaA);
+        int paresA = contarParesA(colaA);
 
         System.out.println(
                 "Cantidad de pares con solución A: "
@@ -212,8 +201,7 @@ public class Ejercicio7 {
 
         System.out.println(colaB);
 
-        int paresB =
-                contarParesB(colaB);
+        int paresB = contarParesB(colaB);
 
         System.out.println(
                 "Cantidad de pares con solución B: "
@@ -227,14 +215,14 @@ public class Ejercicio7 {
 }
 
 /*
-Resultado esperado aproximadamente:
-Cola original A:
-[8, 3, 10, 5, 2, 7]
-
-Cantidad de pares con solución A: 3
-
-Cola A después del método:
-[8, 3, 10, 5, 2, 7]
-
-Y lo mismo para B.
-*/
+ * Resultado esperado aproximadamente:
+ * Cola original A:
+ * [8, 3, 10, 5, 2, 7]
+ * 
+ * Cantidad de pares con solución A: 3
+ * 
+ * Cola A después del método:
+ * [8, 3, 10, 5, 2, 7]
+ * 
+ * Y lo mismo para B.
+ */

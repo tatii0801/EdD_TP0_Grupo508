@@ -139,7 +139,6 @@ class Envio {
     }
 }
 
-
 public class Ejercicio5 {
 
     /*
@@ -173,13 +172,11 @@ public class Ejercicio5 {
             return null;
         }
 
-        Envio mayor =
-                cola.peek();
+        Envio mayor = cola.peek();
 
         for (Envio envio : cola) {
 
-            if (envio.getPeso()
-                    > mayor.getPeso()) {
+            if (envio.getPeso() > mayor.getPeso()) {
 
                 mayor = envio;
             }
@@ -210,11 +207,9 @@ public class Ejercicio5 {
 
     public static void main(String[] args) {
 
-        Scanner teclado =
-                new Scanner(System.in);
+        Scanner teclado = new Scanner(System.in);
 
-        Queue<Envio> cola =
-                new ArrayDeque<>();
+        Queue<Envio> cola = new ArrayDeque<>();
 
         System.out.println(
                 "Carga de envíos.");
@@ -227,8 +222,7 @@ public class Ejercicio5 {
             System.out.print(
                     "Código de seguimiento: ");
 
-            String codigo =
-                    teclado.nextLine();
+            String codigo = teclado.nextLine();
 
             double peso;
 
@@ -237,8 +231,7 @@ public class Ejercicio5 {
                 System.out.print(
                         "Peso en kg: ");
 
-                peso =
-                        teclado.nextDouble();
+                peso = teclado.nextDouble();
 
             } while (peso < 0);
 
@@ -247,14 +240,12 @@ public class Ejercicio5 {
             System.out.print(
                     "Destino (Local/Nacional/Internacional): ");
 
-            String destino =
-                    teclado.nextLine();
+            String destino = teclado.nextLine();
 
             System.out.print(
                     "Estado (En Camino/Entregado/Devuelto): ");
 
-            String estado =
-                    teclado.nextLine();
+            String estado = teclado.nextLine();
 
             cola.add(
                     new Envio(
@@ -272,13 +263,11 @@ public class Ejercicio5 {
         System.out.print(
                 "\nIngrese el destino a consultar: ");
 
-        String destino =
-                teclado.nextLine();
+        String destino = teclado.nextLine();
 
-        double total =
-                pesoTotalDestino(
-                        cola,
-                        destino);
+        double total = pesoTotalDestino(
+                cola,
+                destino);
 
         System.out.println(
                 "Peso total para "
@@ -287,8 +276,7 @@ public class Ejercicio5 {
                         + total
                         + " kg");
 
-        Envio mayor =
-                mayorPeso(cola);
+        Envio mayor = mayorPeso(cola);
 
         if (mayor != null) {
 
@@ -298,8 +286,7 @@ public class Ejercicio5 {
             System.out.println(mayor);
         }
 
-        int devueltos =
-                contarDevueltos(cola);
+        int devueltos = contarDevueltos(cola);
 
         System.out.println(
                 "\nCantidad de envíos devueltos: "

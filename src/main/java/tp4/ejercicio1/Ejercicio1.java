@@ -222,8 +222,7 @@ public class Ejercicio1 {
                         + cantidad);
 
         // e) Crear nueva cola.
-        Queue<Integer> nuevaCola =
-                crearColaNoSuperan(cola, umbral);
+        Queue<Integer> nuevaCola = crearColaNoSuperan(cola, umbral);
 
         System.out.println(
                 "Nueva cola con elementos que no superan el umbral:");

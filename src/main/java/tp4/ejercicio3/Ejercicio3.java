@@ -64,220 +64,210 @@ import java.util.Scanner;
 
 public class Ejercicio3 {
 
-    /*
-     * Devuelve la cantidad de letras del nombre.
-     *
-     * Se eliminan los espacios para que, por ejemplo,
-     * "Ana Maria" se considere por sus letras.
-     */
-    public static int longitudNombre(String nombre) {
+        /*
+         * Devuelve la cantidad de letras del nombre.
+         *
+         * Se eliminan los espacios para que, por ejemplo,
+         * "Ana Maria" se considere por sus letras.
+         */
+        public static int longitudNombre(String nombre) {
 
-        return nombre.replace(" ", "").length();
-    }
-
-    /*
-     * Divide los clientes en las tres colas.
-     */
-    public static void dividirColas(
-            Queue<String> original,
-            Queue<String> cortos,
-            Queue<String> medios,
-            Queue<String> largos) {
-
-        for (String nombre : original) {
-
-            int longitud =
-                    longitudNombre(nombre);
-
-            if (longitud >= 1 && longitud <= 4) {
-
-                cortos.add(nombre);
-
-            } else if (longitud <= 8) {
-
-                medios.add(nombre);
-
-            } else {
-
-                largos.add(nombre);
-            }
-        }
-    }
-
-    /*
-     * Cuenta los elementos.
-     */
-    public static int contar(Queue<String> cola) {
-
-        return cola.size();
-    }
-
-    /*
-     * Busca el nombre más largo.
-     */
-    public static String nombreMasLargo(
-            Queue<String> cola) {
-
-        if (cola.isEmpty()) {
-
-            return "No hay clientes";
+                return nombre.replace(" ", "").length();
         }
 
-        String mayor = null;
+        /*
+         * Divide los clientes en las tres colas.
+         */
+        public static void dividirColas(
+                        Queue<String> original,
+                        Queue<String> cortos,
+                        Queue<String> medios,
+                        Queue<String> largos) {
 
-        for (String nombre : cola) {
+                for (String nombre : original) {
 
-            if (mayor == null ||
-                    longitudNombre(nombre)
-                            > longitudNombre(mayor)) {
+                        int longitud = longitudNombre(nombre);
 
-                mayor = nombre;
-            }
-        }
+                        if (longitud >= 1 && longitud <= 4) {
 
-        return mayor;
-    }
+                                cortos.add(nombre);
 
-    /*
-     * Une las tres colas en el orden indicado.
-     */
-    public static Queue<String> unirColas(
-            Queue<String> cortos,
-            Queue<String> medios,
-            Queue<String> largos) {
+                        } else if (longitud <= 8) {
 
-        Queue<String> resultado =
-                new ArrayDeque<>();
+                                medios.add(nombre);
 
-        for (String nombre : cortos) {
-            resultado.add(nombre);
-        }
+                        } else {
 
-        for (String nombre : medios) {
-            resultado.add(nombre);
-        }
-
-        for (String nombre : largos) {
-            resultado.add(nombre);
-        }
-
-        return resultado;
-    }
-
-    public static void main(String[] args) {
-
-        Scanner teclado =
-                new Scanner(System.in);
-
-        Queue<String> original =
-                new ArrayDeque<>();
-
-        Queue<String> cortos =
-                new ArrayDeque<>();
-
-        Queue<String> medios =
-                new ArrayDeque<>();
-
-        Queue<String> largos =
-                new ArrayDeque<>();
-
-        System.out.println(
-                "Ingrese nombres de clientes.");
-        System.out.println(
-                "Ingrese FIN para terminar.");
-
-        String nombre;
-
-        do {
-
-            System.out.print("Nombre: ");
-
-            nombre =
-                    teclado.nextLine();
-
-            if (!nombre.equalsIgnoreCase("FIN")) {
-
-                if (!nombre.trim().isEmpty()) {
-
-                    original.add(nombre);
+                                largos.add(nombre);
+                        }
                 }
-            }
-
-        } while (!nombre.equalsIgnoreCase("FIN"));
+        }
 
         /*
-         * Dividimos las colas.
+         * Cuenta los elementos.
          */
-        dividirColas(
-                original,
-                cortos,
-                medios,
-                largos);
+        public static int contar(Queue<String> cola) {
 
-        System.out.println(
-                "\nCola original:");
-
-        System.out.println(original);
-
-        System.out.println(
-                "\nCOLA CORTOS:");
-
-        System.out.println(cortos);
-
-        System.out.println(
-                "Cantidad: " + contar(cortos));
-
-        System.out.println(
-                "Nombre más largo: "
-                        + nombreMasLargo(cortos));
-
-        System.out.println(
-                "\nCOLA MEDIOS:");
-
-        System.out.println(medios);
-
-        System.out.println(
-                "Cantidad: " + contar(medios));
-
-        System.out.println(
-                "Nombre más largo: "
-                        + nombreMasLargo(medios));
-
-        System.out.println(
-                "\nCOLA LARGOS:");
-
-        System.out.println(largos);
-
-        System.out.println(
-                "Cantidad: " + contar(largos));
-
-        System.out.println(
-                "Nombre más largo: "
-                        + nombreMasLargo(largos));
+                return cola.size();
+        }
 
         /*
-         * Unimos las tres colas.
+         * Busca el nombre más largo.
          */
-        Queue<String> unificada =
-                unirColas(
-                        cortos,
-                        medios,
-                        largos);
+        public static String nombreMasLargo(
+                        Queue<String> cola) {
 
-        System.out.println(
-                "\nCOLA UNIFICADA:");
+                if (cola.isEmpty()) {
 
-        System.out.println(unificada);
+                        return "No hay clientes";
+                }
+
+                String mayor = null;
+
+                for (String nombre : cola) {
+
+                        if (mayor == null ||
+                                        longitudNombre(nombre) > longitudNombre(mayor)) {
+
+                                mayor = nombre;
+                        }
+                }
+
+                return mayor;
+        }
 
         /*
-         * Comprobamos que las colas originales
-         * siguen teniendo sus elementos.
+         * Une las tres colas en el orden indicado.
          */
-        System.out.println(
-                "\nCola original después de los recorridos:");
+        public static Queue<String> unirColas(
+                        Queue<String> cortos,
+                        Queue<String> medios,
+                        Queue<String> largos) {
 
-        System.out.println(original);
+                Queue<String> resultado = new ArrayDeque<>();
 
-        teclado.close();
-    }
+                for (String nombre : cortos) {
+                        resultado.add(nombre);
+                }
+
+                for (String nombre : medios) {
+                        resultado.add(nombre);
+                }
+
+                for (String nombre : largos) {
+                        resultado.add(nombre);
+                }
+
+                return resultado;
+        }
+
+        public static void main(String[] args) {
+
+                Scanner teclado = new Scanner(System.in);
+
+                Queue<String> original = new ArrayDeque<>();
+
+                Queue<String> cortos = new ArrayDeque<>();
+
+                Queue<String> medios = new ArrayDeque<>();
+
+                Queue<String> largos = new ArrayDeque<>();
+
+                System.out.println(
+                                "Ingrese nombres de clientes.");
+                System.out.println(
+                                "Ingrese FIN para terminar.");
+
+                String nombre;
+
+                do {
+
+                        System.out.print("Nombre: ");
+
+                        nombre = teclado.nextLine();
+
+                        if (!nombre.equalsIgnoreCase("FIN")) {
+
+                                if (!nombre.trim().isEmpty()) {
+
+                                        original.add(nombre);
+                                }
+                        }
+
+                } while (!nombre.equalsIgnoreCase("FIN"));
+
+                /*
+                 * Dividimos las colas.
+                 */
+                dividirColas(
+                                original,
+                                cortos,
+                                medios,
+                                largos);
+
+                System.out.println(
+                                "\nCola original:");
+
+                System.out.println(original);
+
+                System.out.println(
+                                "\nCOLA CORTOS:");
+
+                System.out.println(cortos);
+
+                System.out.println(
+                                "Cantidad: " + contar(cortos));
+
+                System.out.println(
+                                "Nombre más largo: "
+                                                + nombreMasLargo(cortos));
+
+                System.out.println(
+                                "\nCOLA MEDIOS:");
+
+                System.out.println(medios);
+
+                System.out.println(
+                                "Cantidad: " + contar(medios));
+
+                System.out.println(
+                                "Nombre más largo: "
+                                                + nombreMasLargo(medios));
+
+                System.out.println(
+                                "\nCOLA LARGOS:");
+
+                System.out.println(largos);
+
+                System.out.println(
+                                "Cantidad: " + contar(largos));
+
+                System.out.println(
+                                "Nombre más largo: "
+                                                + nombreMasLargo(largos));
+
+                /*
+                 * Unimos las tres colas.
+                 */
+                Queue<String> unificada = unirColas(
+                                cortos,
+                                medios,
+                                largos);
+
+                System.out.println(
+                                "\nCOLA UNIFICADA:");
+
+                System.out.println(unificada);
+
+                /*
+                 * Comprobamos que las colas originales
+                 * siguen teniendo sus elementos.
+                 */
+                System.out.println(
+                                "\nCola original después de los recorridos:");
+
+                System.out.println(original);
+
+                teclado.close();
+        }
 }

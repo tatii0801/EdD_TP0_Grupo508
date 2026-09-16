@@ -113,7 +113,6 @@ class Turno {
     }
 }
 
-
 public class Ejercicio6 {
 
     /*
@@ -122,8 +121,7 @@ public class Ejercicio6 {
     public static Queue<Turno> generarPendientes(
             Queue<Turno> cola) {
 
-        Queue<Turno> pendientes =
-                new ArrayDeque<>();
+        Queue<Turno> pendientes = new ArrayDeque<>();
 
         for (Turno turno : cola) {
 
@@ -180,11 +178,9 @@ public class Ejercicio6 {
 
     public static void main(String[] args) {
 
-        Scanner teclado =
-                new Scanner(System.in);
+        Scanner teclado = new Scanner(System.in);
 
-        Queue<Turno> cola =
-                new ArrayDeque<>();
+        Queue<Turno> cola = new ArrayDeque<>();
 
         System.out.println(
                 "Carga de turnos.");
@@ -197,25 +193,21 @@ public class Ejercicio6 {
             System.out.print(
                     "DNI: ");
 
-            int dni =
-                    teclado.nextInt();
+            int dni = teclado.nextInt();
 
             teclado.nextLine();
 
             System.out.print(
                     "Obra Social: ");
 
-            String obraSocial =
-                    teclado.nextLine();
+            String obraSocial = teclado.nextLine();
 
             System.out.print(
                     "¿Fue atendido? (1 = Sí / 0 = No): ");
 
-            int opcion =
-                    teclado.nextInt();
+            int opcion = teclado.nextInt();
 
-            boolean atendido =
-                    opcion == 1;
+            boolean atendido = opcion == 1;
 
             cola.add(
                     new Turno(
@@ -231,8 +223,7 @@ public class Ejercicio6 {
 
         System.out.println(cola);
 
-        Queue<Turno> pendientes =
-                generarPendientes(cola);
+        Queue<Turno> pendientes = generarPendientes(cola);
 
         System.out.println(
                 "\nTurnos pendientes:");
@@ -242,13 +233,11 @@ public class Ejercicio6 {
         System.out.print(
                 "\nIngrese una obra social: ");
 
-        String obra =
-                teclado.nextLine();
+        String obra = teclado.nextLine();
 
-        int cantidad =
-                contarObraSocial(
-                        cola,
-                        obra);
+        int cantidad = contarObraSocial(
+                cola,
+                obra);
 
         System.out.println(
                 "Cantidad de turnos de "
@@ -259,13 +248,11 @@ public class Ejercicio6 {
         System.out.print(
                 "\nIngrese DNI a buscar: ");
 
-        int dni =
-                teclado.nextInt();
+        int dni = teclado.nextInt();
 
-        boolean atendido =
-                fueAtendido(
-                        cola,
-                        dni);
+        boolean atendido = fueAtendido(
+                cola,
+                dni);
 
         System.out.println(
                 "¿El cliente fue atendido?: "
