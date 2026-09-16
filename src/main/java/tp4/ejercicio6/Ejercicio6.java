@@ -1,6 +1,6 @@
 package tp4.ejercicio6;
 
-import java.util.ArrayDeque;
+import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
 
@@ -9,119 +9,64 @@ import java.util.Scanner;
  * EJERCICIO 6 - FARMACIA
  * ============================================================
  *
- * Enunciado:
+ * ENUNCIADO:
  *
- * Una farmacia atiende clientes mediante una cola de turnos.
+ * Una farmacia atiende mediante una cola de turnos.
  *
  * Cada turno posee:
  *
- * - DNI del cliente
- * - Obra Social
- * - Indicador de si fue atendido
+ * - DNI del cliente.
+ * - Obra social.
+ * - Indicador de si fue atendido.
  *
- * Se debe implementar:
+ * Se debe:
  *
- * a) Crear una nueva cola con los turnos pendientes.
- * b) Contar cuántos turnos corresponden a una obra social dada.
- * c) Buscar un DNI y determinar si fue atendido.
+ * A) Crear una nueva cola con los turnos pendientes.
+ * B) Contar turnos de una obra social determinada.
+ * C) Buscar un DNI y determinar si fue atendido.
  *
- * Si el DNI no existe o está esperando, se devuelve false.
- *
- * La cola original no debe modificarse.
+ * La cola original debe permanecer sin modificaciones.
  *
  * ============================================================
  *
- * PREGUNTAS
+ * PREGUNTAS Y RESPUESTAS
+ * ============================================================
  *
  * a) ¿Cuándo puede terminar antes una búsqueda?
  *
  * RESPUESTA:
- * Si cada DNI es único, cuando se encuentra el DNI se puede
- * terminar la búsqueda.
- *
- * Si puede haber varios registros con el mismo DNI, habría que
- * continuar buscando según lo que se quiera comprobar.
+ * Si el DNI es único, cuando encontramos el DNI podemos terminar.
  *
  *
- * b) ¿Qué ocurre si el DNI no existe?
+ * b) ¿Qué sucede si el DNI no existe?
  *
  * RESPUESTA:
- * Se devuelve false y no se genera ninguna excepción.
+ * Se devuelve false.
  *
  *
- * c) ¿Qué ocurre si se usa remove/poll sobre la cola original?
- *
- * RESPUESTA:
- * Se eliminan los elementos. Para conservar la cola original
- * debemos usar una cola auxiliar y luego restaurarla, o realizar
- * un recorrido que no la modifique.
- *
- *
- * d) ¿Se puede cambiar directamente fueAtendido?
+ * c) ¿Qué sucede si utilizamos poll sobre la cola original?
  *
  * RESPUESTA:
- * Sí, si tenemos la referencia al objeto y utilizamos un setter.
- * En este ejercicio las consultas no modifican la cola.
+ * Los elementos se eliminan. Para conservarla debemos restaurar
+ * los elementos o utilizar un recorrido que no modifique.
+ *
+ *
+ * d) ¿Se puede modificar directamente el atributo fueAtendido?
+ *
+ * RESPUESTA:
+ * Sí, mediante un setter si el atributo es privado.
  *
  * ============================================================
  */
 
-class Turno {
-
-    private int dniCliente;
-    private String obraSocial;
-    private boolean fueAtendido;
-
-    public Turno(
-            int dniCliente,
-            String obraSocial,
-            boolean fueAtendido) {
-
-        this.dniCliente = dniCliente;
-        this.obraSocial = obraSocial;
-        this.fueAtendido = fueAtendido;
-    }
-
-    public int getDniCliente() {
-        return dniCliente;
-    }
-
-    public String getObraSocial() {
-        return obraSocial;
-    }
-
-    public boolean getFueAtendido() {
-        return fueAtendido;
-    }
-
-    public void setFueAtendido(
-            boolean fueAtendido) {
-
-        this.fueAtendido = fueAtendido;
-    }
-
-    @Override
-    public String toString() {
-
-        return "Turno{DNI="
-                + dniCliente
-                + ", obraSocial='"
-                + obraSocial
-                + "', atendido="
-                + fueAtendido
-                + "}";
-    }
-}
-
 public class Ejercicio6 {
 
-    /*
-     * Genera una nueva cola con los turnos pendientes.
-     */
+    // Genera una cola solamente con los pendientes
     public static Queue<Turno> generarPendientes(
             Queue<Turno> cola) {
 
-        Queue<Turno> pendientes = new ArrayDeque<>();
+        Queue<Turno> pendientes =
+                new LinkedList<>();
 
         for (Turno turno : cola) {
 
@@ -134,9 +79,7 @@ public class Ejercicio6 {
         return pendientes;
     }
 
-    /*
-     * Cuenta turnos de una obra social.
-     */
+    // Cuenta turnos de una obra social
     public static int contarObraSocial(
             Queue<Turno> cola,
             String obraSocial) {
@@ -155,12 +98,7 @@ public class Ejercicio6 {
         return contador;
     }
 
-    /*
-     * Busca un DNI.
-     *
-     * Devuelve true si fue atendido.
-     * Devuelve false si está pendiente o no existe.
-     */
+    // Busca un DNI
     public static boolean fueAtendido(
             Queue<Turno> cola,
             int dni) {
@@ -178,91 +116,135 @@ public class Ejercicio6 {
 
     public static void main(String[] args) {
 
-        Scanner teclado = new Scanner(System.in);
+        Scanner entrada =
+                new Scanner(System.in);
 
-        Queue<Turno> cola = new ArrayDeque<>();
+        Queue<Turno> cola =
+                new LinkedList<>();
 
-        System.out.println(
-                "Carga de turnos.");
+        System.out.println("\n=========================================");
+        System.out.println("          TURNOS DE FARMACIA");
+        System.out.println("=========================================");
 
-        for (int i = 0; i < 5; i++) {
+        // ==========================================
+        // CARGA
+        // ==========================================
+
+        int cantidad;
+
+        do {
+
+            System.out.print(
+                    "\n¿Cuántos turnos desea ingresar? "
+                            + "(Mínimo 5): ");
+
+            cantidad =
+                    entrada.nextInt();
+
+        } while (cantidad < 5);
+
+        entrada.nextLine();
+
+        for (int i = 1;
+             i <= cantidad;
+             i++) {
 
             System.out.println(
-                    "\nTurno " + (i + 1));
+                    "\n--- Turno #" + i + " ---");
 
             System.out.print(
                     "DNI: ");
 
-            int dni = teclado.nextInt();
+            int dni =
+                    entrada.nextInt();
 
-            teclado.nextLine();
+            entrada.nextLine();
 
             System.out.print(
                     "Obra Social: ");
 
-            String obraSocial = teclado.nextLine();
+            String obraSocial =
+                    entrada.nextLine();
 
             System.out.print(
-                    "¿Fue atendido? (1 = Sí / 0 = No): ");
+                    "¿Fue atendido? "
+                            + "(1 = Sí / 0 = No): ");
 
-            int opcion = teclado.nextInt();
+            int opcion =
+                    entrada.nextInt();
 
-            boolean atendido = opcion == 1;
+            boolean atendido =
+                    opcion == 1;
 
-            cola.add(
+            Turno turno =
                     new Turno(
                             dni,
                             obraSocial,
-                            atendido));
+                            atendido);
+
+            cola.add(turno);
         }
 
-        teclado.nextLine();
+        entrada.nextLine();
+
+        // ==========================================
+        // RESULTADOS
+        // ==========================================
 
         System.out.println(
                 "\nCola original:");
 
         System.out.println(cola);
 
-        Queue<Turno> pendientes = generarPendientes(cola);
+        Queue<Turno> pendientes =
+                generarPendientes(cola);
 
         System.out.println(
-                "\nTurnos pendientes:");
+                "\nA) Turnos pendientes:");
 
         System.out.println(pendientes);
 
         System.out.print(
-                "\nIngrese una obra social: ");
+                "\nB) Ingrese obra social: ");
 
-        String obra = teclado.nextLine();
+        String obra =
+                entrada.nextLine();
 
-        int cantidad = contarObraSocial(
-                cola,
-                obra);
+        int cantidadObra =
+                contarObraSocial(
+                        cola,
+                        obra);
 
         System.out.println(
                 "Cantidad de turnos de "
                         + obra
                         + ": "
-                        + cantidad);
+                        + cantidadObra);
 
         System.out.print(
-                "\nIngrese DNI a buscar: ");
+                "\nC) Ingrese DNI a buscar: ");
 
-        int dni = teclado.nextInt();
+        int dni =
+                entrada.nextInt();
 
-        boolean atendido = fueAtendido(
-                cola,
-                dni);
+        boolean atendido =
+                fueAtendido(
+                        cola,
+                        dni);
 
         System.out.println(
-                "¿El cliente fue atendido?: "
+                "¿Fue atendido?: "
                         + atendido);
+
+        // ==========================================
+        // COMPROBACIÓN
+        // ==========================================
 
         System.out.println(
                 "\nCola original después de las consultas:");
 
         System.out.println(cola);
 
-        teclado.close();
+        entrada.close();
     }
 }
