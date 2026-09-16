@@ -1,4 +1,4 @@
-package tp3;
+package tp3.ejercicio2;
 
 import java.util.Scanner;
 import java.util.Stack;
