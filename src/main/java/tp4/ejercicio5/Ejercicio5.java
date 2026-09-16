@@ -1,6 +1,6 @@
 package tp4.ejercicio5;
 
-import java.util.ArrayDeque;
+import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
 
@@ -9,7 +9,7 @@ import java.util.Scanner;
  * EJERCICIO 5 - ENVÍOS
  * ============================================================
  *
- * Enunciado:
+ * ENUNCIADO:
  *
  * Cada envío posee:
  *
@@ -19,141 +19,72 @@ import java.util.Scanner;
  * - estado
  *
  * Destinos:
- *
  * - Local
  * - Nacional
  * - Internacional
  *
  * Estados:
- *
  * - En Camino
  * - Entregado
  * - Devuelto
  *
- * Se debe implementar:
+ * Se debe:
  *
- * a) Calcular el peso total de los envíos de un destino indicado.
- * b) Encontrar el envío de mayor peso.
- * c) Contar los envíos devueltos.
- * d) Mantener la cola original sin modificaciones.
+ * A) Calcular el peso total de un destino.
+ * B) Obtener el envío de mayor peso.
+ * C) Contar los envíos devueltos.
+ * D) Mantener la cola original sin modificaciones.
  *
  * ============================================================
  *
- * PREGUNTAS
+ * PREGUNTAS Y RESPUESTAS
+ * ============================================================
  *
- * a) ¿Por qué una cola es adecuada para los envíos?
- *
- * RESPUESTA:
- * Porque una cola trabaja con FIFO: el primer envío que llega
- * es el primero que se procesa.
- *
- *
- * b) Si los envíos nacionales pesan:
- *
- * 10.5 kg
- * 20.0 kg
- * 15.2 kg
- *
- * ¿Cuál es el peso total?
+ * a) ¿Por qué una cola es adecuada?
  *
  * RESPUESTA:
- *
- * 10.5 + 20.0 + 15.2 = 45.7 kg
- *
- * El mayor de esos tres es 20.0 kg.
+ * Porque la cola trabaja con FIFO, es decir, el primero que
+ * llega es el primero que se procesa.
  *
  *
- * c) ¿Qué ocurre si usamos poll/remove para recorrer la cola?
- *
- * RESPUESTA:
- * Los elementos son eliminados. Para conservar la cola original
- * se debe utilizar una cola auxiliar o un recorrido no destructivo.
- *
- *
- * d) ¿El siguiente código encuentra el mayor?
- *
- * Envió mayor = cola.peek();
- *
- * while (!cola.isEmpty()) {
- *     Envio actual = cola.poll();
- *     if (actual.getPeso() > mayor.getPeso()) {
- *         mayor = actual;
- *     }
- * }
+ * b) Si los envíos nacionales pesan 10.5, 20.0 y 15.2 kg,
+ *    ¿cuál es el total?
  *
  * RESPUESTA:
- * Sí, encuentra el mayor, pero modifica y vacía la cola original.
- * Además, se debe verificar que la cola no esté vacía antes de
- * usar peek().
+ * 45.7 kg.
+ *
+ * El mayor de esos tres envíos es el de 20.0 kg.
+ *
+ *
+ * c) ¿Qué ocurre si utilizamos poll para recorrer?
+ *
+ * RESPUESTA:
+ * Los elementos son eliminados. Por eso debemos restaurarlos
+ * o utilizar un recorrido que no modifique la cola.
+ *
+ *
+ * d) ¿El código que utiliza peek y poll encuentra el mayor?
+ *
+ * RESPUESTA:
+ * Sí, puede encontrarlo, pero vacía la cola si no se restauran
+ * los elementos.
  *
  * ============================================================
  */
 
-class Envio {
-
-    private String codigoSeguimiento;
-    private double peso;
-    private String destino;
-    private String estado;
-
-    public Envio(
-            String codigoSeguimiento,
-            double peso,
-            String destino,
-            String estado) {
-
-        this.codigoSeguimiento = codigoSeguimiento;
-        this.peso = peso;
-        this.destino = destino;
-        this.estado = estado;
-    }
-
-    public String getCodigoSeguimiento() {
-        return codigoSeguimiento;
-    }
-
-    public double getPeso() {
-        return peso;
-    }
-
-    public String getDestino() {
-        return destino;
-    }
-
-    public String getEstado() {
-        return estado;
-    }
-
-    @Override
-    public String toString() {
-
-        return "Envio{codigo='"
-                + codigoSeguimiento
-                + "', peso="
-                + peso
-                + " kg, destino='"
-                + destino
-                + "', estado='"
-                + estado
-                + "'}";
-    }
-}
-
 public class Ejercicio5 {
 
-    /*
-     * Calcula el peso total de un destino.
-     */
+    // Calcula el peso total de un destino
     public static double pesoTotalDestino(
             Queue<Envio> cola,
             String destino) {
 
         double total = 0;
 
+        // Recorremos sin modificar la cola
         for (Envio envio : cola) {
 
-            if (envio.getDestino()
-                    .equalsIgnoreCase(destino)) {
+            if (envio.getDestino().equalsIgnoreCase(destino)) {
 
                 total += envio.getPeso();
             }
@@ -162,13 +93,12 @@ public class Ejercicio5 {
         return total;
     }
 
-    /*
-     * Busca el envío de mayor peso.
-     */
+    // Busca el envío de mayor peso
     public static Envio mayorPeso(
             Queue<Envio> cola) {
 
         if (cola.isEmpty()) {
+
             return null;
         }
 
@@ -185,9 +115,7 @@ public class Ejercicio5 {
         return mayor;
     }
 
-    /*
-     * Cuenta los envíos devueltos.
-     */
+    // Cuenta los envíos devueltos
     public static int contarDevueltos(
             Queue<Envio> cola) {
 
@@ -195,8 +123,7 @@ public class Ejercicio5 {
 
         for (Envio envio : cola) {
 
-            if (envio.getEstado()
-                    .equalsIgnoreCase("Devuelto")) {
+            if (envio.getEstado().equalsIgnoreCase("Devuelto")) {
 
                 contador++;
             }
@@ -207,81 +134,102 @@ public class Ejercicio5 {
 
     public static void main(String[] args) {
 
-        Scanner teclado = new Scanner(System.in);
+        Scanner entrada = new Scanner(System.in);
 
-        Queue<Envio> cola = new ArrayDeque<>();
+        Queue<Envio> cola = new LinkedList<>();
 
-        System.out.println(
-                "Carga de envíos.");
+        System.out.println("\n=========================================");
+        System.out.println("             GESTIÓN DE ENVÍOS");
+        System.out.println("=========================================");
 
-        for (int i = 0; i < 5; i++) {
+        // ==========================================
+        // CARGA DE DATOS
+        // ==========================================
 
-            System.out.println(
-                    "\nEnvío " + (i + 1));
+        int cantidad;
+
+        do {
 
             System.out.print(
-                    "Código de seguimiento: ");
+                    "\n¿Cuántos envíos desea ingresar? "
+                    + "(Mínimo 5): ");
 
-            String codigo = teclado.nextLine();
+            cantidad = entrada.nextInt();
+
+        } while (cantidad < 5);
+
+        entrada.nextLine();
+
+        for (int i = 1; i <= cantidad; i++) {
+
+            System.out.println("\n--- Envío #" + i + " ---");
+
+            System.out.print("Código de seguimiento: ");
+
+            String codigo = entrada.nextLine();
 
             double peso;
 
             do {
 
-                System.out.print(
-                        "Peso en kg: ");
+                System.out.print("Peso en kg: ");
 
-                peso = teclado.nextDouble();
+                peso = entrada.nextDouble();
 
             } while (peso < 0);
 
-            teclado.nextLine();
+            entrada.nextLine();
 
             System.out.print(
-                    "Destino (Local/Nacional/Internacional): ");
+                    "Destino "
+                    + "(Local/Nacional/Internacional): ");
 
-            String destino = teclado.nextLine();
+            String destino = entrada.nextLine();
 
             System.out.print(
-                    "Estado (En Camino/Entregado/Devuelto): ");
+                    "Estado "
+                    + "(En Camino/Entregado/Devuelto): ");
 
-            String estado = teclado.nextLine();
+            String estado = entrada.nextLine();
 
-            cola.add(
-                    new Envio(
-                            codigo,
-                            peso,
-                            destino,
-                            estado));
+            Envio nuevo = new Envio(
+                    codigo,
+                    peso,
+                    destino,
+                    estado);
+
+            cola.add(nuevo);
         }
 
-        System.out.println(
-                "\nCola original:");
+        // ==========================================
+        // RESULTADOS
+        // ==========================================
 
+        System.out.println("\nCola original:");
         System.out.println(cola);
 
         System.out.print(
-                "\nIngrese el destino a consultar: ");
+                "\nIngrese destino a consultar: ");
 
-        String destino = teclado.nextLine();
+        String destino = entrada.nextLine();
 
         double total = pesoTotalDestino(
                 cola,
                 destino);
 
         System.out.println(
-                "Peso total para "
-                        + destino
-                        + ": "
-                        + total
-                        + " kg");
+                "\nA) Peso total del destino "
+                + destino
+                + ": "
+                + total
+                + " kg");
 
         Envio mayor = mayorPeso(cola);
 
         if (mayor != null) {
 
             System.out.println(
-                    "\nEnvío de mayor peso:");
+                    "\nB) Envío de mayor peso:");
 
             System.out.println(mayor);
         }
@@ -289,14 +237,15 @@ public class Ejercicio5 {
         int devueltos = contarDevueltos(cola);
 
         System.out.println(
-                "\nCantidad de envíos devueltos: "
-                        + devueltos);
+                "\nC) Cantidad de envíos devueltos: "
+                + devueltos);
 
+        // Comprobamos que la cola no fue modificada
         System.out.println(
                 "\nCola original después de las consultas:");
 
         System.out.println(cola);
 
-        teclado.close();
+        entrada.close();
     }
 }
