@@ -1,21 +1,20 @@
 package tp4.ejercicio8;
 
-import java.util.ArrayDeque;
+import java.util.LinkedList;
 import java.util.Queue;
 
 /*
  * ============================================================
- * EJERCICIO 8 - CLIENTES
+ * EJERCICIO 8 - ELIMINAR MENORES DE EDAD
  * ============================================================
  *
- * Enunciado:
+ * ENUNCIADO:
  *
  * Se dispone de una cola de clientes.
  *
  * Cada cliente posee una edad.
  *
- * Se deben eliminar de la cola todos los clientes menores
- * de 18 años.
+ * Se deben eliminar todos los clientes menores de 18 años.
  *
  * Los clientes mayores o iguales a 18 años deben conservar
  * su orden original.
@@ -38,116 +37,82 @@ import java.util.Queue;
  *
  * ============================================================
  *
- * PROBLEMAS DEL CÓDIGO:
+ * PROBLEMA:
  *
- * 1) La condición i < cola.size() utiliza un tamaño que puede
- *    cambiar durante el recorrido.
+ * La condición i < cola.size() utiliza un tamaño que cambia
+ * durante el recorrido.
  *
- * 2) Cuando se elimina un menor, el tamaño de la cola disminuye.
+ * Cuando eliminamos un menor de edad, la cola disminuye.
  *
- * 3) Esto puede hacer que el ciclo termine antes de procesar
- *    todos los elementos originales.
+ * Por este motivo no necesariamente se procesan todos los
+ * elementos originales.
  *
- * 4) c.edad puede generar un problema de encapsulamiento si
- *    edad es private.
+ * Además, si edad es private, no debemos utilizar:
+ *
+ * c.edad
+ *
+ * sino:
+ *
+ * c.getEdad()
  *
  * ============================================================
  *
  * SOLUCIÓN:
  *
- * Primero guardamos el tamaño original:
+ * Guardamos el tamaño original antes de comenzar:
  *
  * int cantidadOriginal = cola.size();
  *
- * Luego procesamos exactamente esa cantidad de elementos.
- *
- * Los mayores de edad se vuelven a insertar.
- * Los menores simplemente no se vuelven a insertar.
+ * Después procesamos exactamente esa cantidad.
  *
  * ============================================================
  *
- * PREGUNTAS
+ * PREGUNTAS Y RESPUESTAS
+ * ============================================================
  *
- * a) ¿Por qué se debe guardar el tamaño original?
- *
- * RESPUESTA:
- * Porque la cantidad de elementos cambia al eliminar menores.
- * Guardar el tamaño original permite procesar exactamente una
- * vez cada elemento que estaba inicialmente en la cola.
- *
- *
- * b) ¿Qué pasa con los clientes mayores?
+ * a) ¿Por qué se guarda el tamaño original?
  *
  * RESPUESTA:
- * Se vuelven a insertar al final y mantienen el orden relativo
- * que tenían originalmente.
+ * Porque la cantidad de elementos de la cola cambia durante
+ * el proceso.
+ *
+ *
+ * b) ¿Qué pasa con los mayores de edad?
+ *
+ * RESPUESTA:
+ * Se vuelven a insertar y mantienen su orden relativo.
  *
  *
  * c) ¿Qué pasa con los menores?
  *
  * RESPUESTA:
- * Se eliminan porque no se vuelven a insertar en la cola.
+ * Se eliminan porque no se vuelven a insertar.
  *
  * ============================================================
  */
 
-class Cliente {
-
-    private String nombre;
-    private int edad;
-
-    public Cliente(
-            String nombre,
-            int edad) {
-
-        this.nombre = nombre;
-        this.edad = edad;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public int getEdad() {
-        return edad;
-    }
-
-    @Override
-    public String toString() {
-
-        return "Cliente{nombre='"
-                + nombre
-                + "', edad="
-                + edad
-                + "}";
-    }
-}
-
 public class Ejercicio8 {
 
     /*
-     * ========================================================
-     * MÉTODO CORREGIDO
-     * ========================================================
+     * Elimina todos los menores de 18 años.
      */
     public static void eliminarMenores(
             Queue<Cliente> cola) {
 
-        /*
-         * Guardamos la cantidad ORIGINAL.
-         */
+        // Guardamos la cantidad original
         int cantidadOriginal = cola.size();
 
         /*
-         * Procesamos exactamente los elementos
-         * que existían al comienzo.
+         * Procesamos exactamente una vez cada
+         * elemento que existía originalmente.
          */
         for (int i = 0; i < cantidadOriginal; i++) {
 
+            // Sacamos el primer cliente
             Cliente cliente = cola.poll();
 
             /*
-             * Si es mayor o igual a 18,
+             * Si tiene 18 años o más,
              * vuelve a la cola.
              */
             if (cliente.getEdad() >= 18) {
@@ -156,19 +121,22 @@ public class Ejercicio8 {
             }
 
             /*
-             * Si es menor de 18,
-             * no lo agregamos nuevamente.
+             * Si tiene menos de 18,
+             * no lo volvemos a insertar.
              */
         }
     }
 
     public static void main(String[] args) {
 
-        Queue<Cliente> cola = new ArrayDeque<>();
+        Queue<Cliente> cola = new LinkedList<>();
 
-        /*
-         * Cargamos algunos clientes.
-         */
+        System.out.println("\n=========================================");
+        System.out.println("       GESTIÓN DE CLIENTES");
+        System.out.println("=========================================");
+
+        // Cargamos clientes de ejemplo
+
         cola.add(
                 new Cliente(
                         "Ana",
@@ -195,18 +163,20 @@ public class Ejercicio8 {
                         30));
 
         System.out.println(
-                "Cola original:");
+                "\nCola original:");
 
         System.out.println(cola);
 
-        /*
-         * Eliminamos los menores.
-         */
+        // Eliminamos los menores
         eliminarMenores(cola);
 
         System.out.println(
                 "\nCola después de eliminar menores de edad:");
 
         System.out.println(cola);
+
+        System.out.println(
+                "\nLos clientes mayores o iguales a 18 "
+                        + "mantuvieron su orden.");
     }
 }
