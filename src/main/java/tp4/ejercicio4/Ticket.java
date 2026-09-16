@@ -1,5 +1,20 @@
 package tp4.ejercicio4;
 
+/*
+ * ============================================================
+ * CLASE TICKET
+ * ============================================================
+ *
+ * Atributos:
+ *
+ * - idTicket: identifica al ticket.
+ * - departamento: área que debe atenderlo.
+ * - nivelUrgencia: nivel entre 1 y 5.
+ *
+ * Los atributos son private para aplicar encapsulamiento.
+ * ============================================================
+ */
+
 public class Ticket {
 
     private int idTicket;

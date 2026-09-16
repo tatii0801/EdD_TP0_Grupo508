@@ -1,6 +1,6 @@
 package tp4.ejercicio1;
 
-import java.util.ArrayDeque;
+import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Random;
 import java.util.Scanner;
@@ -12,32 +12,37 @@ import java.util.Scanner;
  * TEMA: COLA (QUEUE)
  * ============================================================
  *
- * EJERCICIO 1
+ * EJERCICIO 1 - NIVELES DE SEÑAL
  *
- * Enunciado:
+ * ENUNCIADO:
  *
  * Se desea simular una cola que contiene N niveles de señal.
- * Se debe solicitar un valor umbral máximo.
  *
- * Los elementos de la cola que excedan el valor umbral deberán
- * ser retirados y reubicados al final de la misma cola.
+ * Se debe solicitar:
+ *
+ * - La cantidad N de elementos.
+ * - Un valor umbral máximo.
+ *
+ * Los elementos que excedan el valor umbral deberán ser
+ * retirados y reubicados al final de la misma cola.
  *
  * Se debe:
  *
- * a) Solicitar N y generar aleatoriamente los valores.
+ * a) Solicitar N y generar los valores aleatoriamente.
  * b) Solicitar el valor umbral.
- * c) Reubicar los elementos que superan el umbral.
- * d) Mostrar la cola resultante.
- * e) Contar y mostrar los elementos que no superan el umbral.
- * f) Crear una nueva cola que contenga solamente los elementos
- *    que no superan el umbral.
+ * c) Reubicar los elementos que superen el umbral.
+ * d) Mostrar la cola después de la reordenación.
+ * e) Contar los elementos que no superen el umbral.
+ * f) Crear una nueva cola con los elementos que no superen
+ *    el umbral.
  *
- * Al recorrer la cola para realizar consultas, la misma debe
- * mantenerse sin modificaciones.
+ * La cola debe mantenerse sin modificaciones cuando se realizan
+ * recorridos de consulta.
  *
  * ============================================================
  *
- * PREGUNTAS
+ * PREGUNTAS Y RESPUESTAS
+ * ============================================================
  *
  * a) Para la cola [10, 50, 20, 5] y umbral 15,
  *    ¿cuál es el orden final?
@@ -45,84 +50,88 @@ import java.util.Scanner;
  * RESPUESTA:
  * [10, 5, 50, 20]
  *
- * Los valores que no superan 15 quedan primero y los que
- * superan 15 se reubican al final, manteniendo el orden.
+ * Los elementos que no superan el umbral quedan primero y los
+ * que lo superan se colocan al final, respetando su orden.
  *
  *
  * b) ¿Qué sucede si todos los elementos superan el umbral?
  *
  * RESPUESTA:
- * La cola queda en el mismo orden original, pero todos sus
- * elementos pertenecen al grupo que fue reubicado.
+ * La cola mantiene el mismo orden relativo de los elementos.
  *
  *
- * c) ¿Por qué se debe trabajar con el tamaño original?
+ * c) ¿Por qué se debe utilizar el tamaño original?
  *
  * RESPUESTA:
- * Porque al volver a insertar elementos en la cola, su tamaño
- * puede mantenerse o modificarse. Si utilizáramos como condición
- * !cola.isEmpty(), podríamos volver a procesar elementos y no
- * terminar nunca.
+ * Porque los elementos se vuelven a insertar en la cola.
+ * Si utilizáramos !cola.isEmpty() podríamos volver a procesar
+ * elementos y generar un ciclo que no termina.
  *
  *
- * d) ¿Qué se puede hacer si los elementos que superan el umbral
- *    deben enviarse a otra cola?
+ * d) ¿Qué se podría hacer si los elementos que superan el umbral
+ *    deben guardarse en otra cola?
  *
  * RESPUESTA:
  * Se puede utilizar una cola auxiliar para guardar los elementos
- * que superan el umbral y luego procesarlos por separado.
+ * que superan el umbral.
  *
  * ============================================================
  */
 
 public class Ejercicio1 {
 
-    /*
-     * Reubica al final los elementos que superan el umbral.
-     */
-    public static void reubicarMayores(Queue<Integer> cola, int umbral) {
+    // Reubica al final los elementos que superan el umbral
+    public static void reubicarMayores(
+            Queue<Integer> cola,
+            int umbral) {
 
-        Queue<Integer> noSuperan = new ArrayDeque<>();
-        Queue<Integer> superan = new ArrayDeque<>();
+        Queue<Integer> noSuperan = new LinkedList<>();
 
-        // Guardamos el tamaño original.
-        int cantidadOriginal = cola.size();
+        Queue<Integer> superan = new LinkedList<>();
 
-        // Procesamos exactamente los elementos originales.
-        for (int i = 0; i < cantidadOriginal; i++) {
+        // Guardamos el tamaño original
+        int tamañoOriginal = cola.size();
 
-            int numero = cola.remove();
+        // Procesamos solamente los elementos originales
+        for (int i = 0; i < tamañoOriginal; i++) {
+
+            int numero = cola.poll();
 
             if (numero > umbral) {
+
                 superan.add(numero);
+
             } else {
+
                 noSuperan.add(numero);
             }
         }
 
-        // Primero vuelven los que no superan el umbral.
+        // Primero colocamos los que no superan
         while (!noSuperan.isEmpty()) {
-            cola.add(noSuperan.remove());
+
+            cola.add(noSuperan.poll());
         }
 
-        // Después vuelven los que superan el umbral.
+        // Después colocamos los que superan
         while (!superan.isEmpty()) {
-            cola.add(superan.remove());
+
+            cola.add(superan.poll());
         }
     }
 
-    /*
-     * Cuenta los elementos que no superan el umbral.
-     *
-     * Se utiliza for-each para no modificar la cola.
-     */
-    public static int contarNoSuperan(Queue<Integer> cola, int umbral) {
+    // Cuenta los elementos que no superan el umbral
+    public static int contarNoSuperan(
+            Queue<Integer> cola,
+            int umbral) {
 
         int contador = 0;
 
+        // Este recorrido NO modifica la cola
         for (int numero : cola) {
 
             if (numero <= umbral) {
+
                 contador++;
             }
         }
@@ -130,20 +139,18 @@ public class Ejercicio1 {
         return contador;
     }
 
-    /*
-     * Crea una nueva cola solamente con los elementos
-     * que no superan el umbral.
-     *
-     * La cola original no se modifica.
-     */
+    // Crea una nueva cola con los elementos que no superan
     public static Queue<Integer> crearColaNoSuperan(
-            Queue<Integer> cola, int umbral) {
+            Queue<Integer> cola,
+            int umbral) {
 
-        Queue<Integer> nuevaCola = new ArrayDeque<>();
+        Queue<Integer> nuevaCola = new LinkedList<>();
 
+        // Recorremos sin modificar la cola original
         for (int numero : cola) {
 
             if (numero <= umbral) {
+
                 nuevaCola.add(numero);
             }
         }
@@ -151,89 +158,107 @@ public class Ejercicio1 {
         return nuevaCola;
     }
 
-    /*
-     * Muestra los elementos de una cola.
-     */
-    public static void mostrarCola(Queue<Integer> cola) {
+    public static void main(String[] args) {
 
-        System.out.println(cola);
-    }
+        Scanner entrada = new Scanner(System.in);
 
-    /*
-     * Lee un entero mayor o igual a cero.
-     */
-    public static int leerEnteroNoNegativo(Scanner teclado, String mensaje) {
+        Random aleatorio = new Random();
 
-        int numero;
+        Queue<Integer> cola = new LinkedList<>();
+
+        // ==========================================
+        // PASO 1: CARGA DE DATOS
+        // ==========================================
+
+        System.out.println("\n=========================================");
+        System.out.println("       NIVELES DE SEÑAL");
+        System.out.println("=========================================");
+
+        int cantidad;
 
         do {
 
-            System.out.print(mensaje);
-            numero = teclado.nextInt();
+            System.out.print(
+                    "\n¿Cuántos niveles desea generar? ");
 
-            if (numero < 0) {
-                System.out.println("Debe ser un valor mayor o igual a 0.");
+            cantidad = entrada.nextInt();
+
+            if (cantidad < 1) {
+
+                System.out.println(
+                        "-> Error: debe ingresar al menos 1.");
             }
 
-        } while (numero < 0);
+        } while (cantidad < 1);
 
-        return numero;
-    }
+        // Generamos valores aleatorios entre 0 y 100
+        for (int i = 0; i < cantidad; i++) {
 
-    public static void main(String[] args) {
+            int numero = aleatorio.nextInt(101);
 
-        Scanner teclado = new Scanner(System.in);
-        Random random = new Random();
-
-        Queue<Integer> cola = new ArrayDeque<>();
-
-        // a) Solicitar N.
-        int n = leerEnteroNoNegativo(
-                teclado,
-                "Ingrese la cantidad de niveles de señal: ");
-
-        // Generamos valores aleatorios entre 0 y 100.
-        for (int i = 0; i < n; i++) {
-
-            int valor = random.nextInt(101);
-
-            cola.add(valor);
+            cola.add(numero);
         }
 
-        System.out.println("\nCola original:");
-        mostrarCola(cola);
+        System.out.println(
+                "\nCola original:");
 
-        // b) Solicitar umbral.
-        int umbral = leerEnteroNoNegativo(
-                teclado,
-                "Ingrese el valor umbral: ");
+        System.out.println(cola);
 
-        // c) Reubicar mayores.
-        reubicarMayores(cola, umbral);
+        // ==========================================
+        // PASO 2: UMBRAL
+        // ==========================================
 
-        System.out.println("\nCola después de reubicar:");
-        mostrarCola(cola);
+        System.out.print(
+                "\nIngrese el valor umbral: ");
 
-        // d) Contar los que no superan el umbral.
-        int cantidad = contarNoSuperan(cola, umbral);
+        int umbral = entrada.nextInt();
+
+        // ==========================================
+        // PASO 3: REUBICACIÓN
+        // ==========================================
+
+        reubicarMayores(
+                cola,
+                umbral);
 
         System.out.println(
-                "\nCantidad de elementos que no superan el umbral: "
-                        + cantidad);
+                "\nCola después de reubicar:");
 
-        // e) Crear nueva cola.
-        Queue<Integer> nuevaCola = crearColaNoSuperan(cola, umbral);
+        System.out.println(cola);
+
+        // ==========================================
+        // PASO 4: CONTAR
+        // ==========================================
+
+        int cantidadNoSuperan = contarNoSuperan(
+                cola,
+                umbral);
 
         System.out.println(
-                "Nueva cola con elementos que no superan el umbral:");
+                "\nCantidad de elementos que no superan "
+                        + umbral + ": "
+                        + cantidadNoSuperan);
 
-        mostrarCola(nuevaCola);
+        // ==========================================
+        // PASO 5: NUEVA COLA
+        // ==========================================
 
-        // La cola original permanece igual después de las consultas.
+        Queue<Integer> nuevaCola = crearColaNoSuperan(
+                cola,
+                umbral);
+
         System.out.println(
-                "\nLa cola original se mantiene:");
-        mostrarCola(cola);
+                "\nNueva cola con elementos que no superan "
+                        + "el umbral:");
 
-        teclado.close();
+        System.out.println(nuevaCola);
+
+        // Comprobamos que la cola original no cambió
+        System.out.println(
+                "\nCola original después de las consultas:");
+
+        System.out.println(cola);
+
+        entrada.close();
     }
 }

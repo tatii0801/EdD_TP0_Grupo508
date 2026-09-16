@@ -1,6 +1,6 @@
 package tp4.ejercicio3;
 
-import java.util.ArrayDeque;
+import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
 
@@ -9,75 +9,65 @@ import java.util.Scanner;
  * EJERCICIO 3 - CALL CENTER
  * ============================================================
  *
- * Enunciado:
+ * ENUNCIADO:
  *
  * Se dispone de una cola de clientes de un Call Center.
  *
- * Los clientes deben separarse en tres nuevas colas:
+ * Se deben separar los nombres en tres colas:
  *
- * - Cola corta: nombres de 1 a 4 letras.
- * - Cola media: nombres de 5 a 8 letras.
- * - Cola larga: nombres de 9 o más letras.
+ * - CORTOS: de 1 a 4 letras.
+ * - MEDIOS: de 5 a 8 letras.
+ * - LARGOS: de 9 o más letras.
  *
  * Para cada cola se debe:
  *
- * - Contar la cantidad de clientes.
+ * - Contar clientes.
  * - Obtener el nombre más largo.
  *
- * Luego se deben unir las tres colas en una nueva cola,
- * respetando el siguiente orden:
+ * Luego se deben unir las tres colas:
  *
  * CORTOS -> MEDIOS -> LARGOS
  *
- * La cola original y las colas resultantes no deben modificarse
- * cuando se realizan recorridos de consulta.
+ * La cola original debe permanecer sin modificaciones.
  *
- * La carga finaliza cuando se ingresa FIN.
+ * La carga termina ingresando FIN.
  *
  * ============================================================
  *
- * PREGUNTAS
+ * PREGUNTAS Y RESPUESTAS
+ * ============================================================
  *
- * a) ¿La cola original queda vacía después de dividirla?
- *
- * RESPUESTA:
- * No necesariamente. En esta solución se utiliza un recorrido
- * que no elimina los elementos, por lo tanto la cola original
- * permanece igual.
- *
- *
- * b) ¿Qué sucede si una categoría está vacía?
+ * a) ¿La cola original debe quedar vacía?
  *
  * RESPUESTA:
- * Se informa que no hay clientes en esa categoría y no se intenta
- * obtener un elemento inexistente.
+ * No. En esta solución se recorre sin eliminar elementos,
+ * por lo tanto la cola original permanece igual.
  *
  *
- * c) ¿Se necesita una cola auxiliar para unir las tres colas?
+ * b) ¿Qué pasa si una categoría está vacía?
  *
  * RESPUESTA:
- * No. Se puede crear una nueva cola y copiar primero los clientes
- * cortos, después los medios y finalmente los largos.
+ * Se informa que no existen clientes en esa categoría.
+ *
+ *
+ * c) ¿Se necesita una cola auxiliar para unirlas?
+ *
+ * RESPUESTA:
+ * No. Se puede crear una nueva cola y agregar primero los
+ * elementos cortos, después los medios y finalmente los largos.
  *
  * ============================================================
  */
 
 public class Ejercicio3 {
 
-        /*
-         * Devuelve la cantidad de letras del nombre.
-         *
-         * Se eliminan los espacios para que, por ejemplo,
-         * "Ana Maria" se considere por sus letras.
-         */
+        // Devuelve la cantidad de letras del nombre
         public static int longitudNombre(String nombre) {
 
                 return nombre.replace(" ", "").length();
         }
 
-        /*
-         * Divide los clientes en las tres colas.
-         */
+        // Divide los nombres en las tres colas
         public static void dividirColas(
                         Queue<String> original,
                         Queue<String> cortos,
@@ -88,7 +78,8 @@ public class Ejercicio3 {
 
                         int longitud = longitudNombre(nombre);
 
-                        if (longitud >= 1 && longitud <= 4) {
+                        if (longitud >= 1
+                                        && longitud <= 4) {
 
                                 cortos.add(nombre);
 
@@ -103,17 +94,7 @@ public class Ejercicio3 {
                 }
         }
 
-        /*
-         * Cuenta los elementos.
-         */
-        public static int contar(Queue<String> cola) {
-
-                return cola.size();
-        }
-
-        /*
-         * Busca el nombre más largo.
-         */
+        // Busca el nombre más largo
         public static String nombreMasLargo(
                         Queue<String> cola) {
 
@@ -126,8 +107,8 @@ public class Ejercicio3 {
 
                 for (String nombre : cola) {
 
-                        if (mayor == null ||
-                                        longitudNombre(nombre) > longitudNombre(mayor)) {
+                        if (mayor == null
+                                        || longitudNombre(nombre) > longitudNombre(mayor)) {
 
                                 mayor = nombre;
                         }
@@ -136,25 +117,26 @@ public class Ejercicio3 {
                 return mayor;
         }
 
-        /*
-         * Une las tres colas en el orden indicado.
-         */
+        // Une las tres colas
         public static Queue<String> unirColas(
                         Queue<String> cortos,
                         Queue<String> medios,
                         Queue<String> largos) {
 
-                Queue<String> resultado = new ArrayDeque<>();
+                Queue<String> resultado = new LinkedList<>();
 
                 for (String nombre : cortos) {
+
                         resultado.add(nombre);
                 }
 
                 for (String nombre : medios) {
+
                         resultado.add(nombre);
                 }
 
                 for (String nombre : largos) {
+
                         resultado.add(nombre);
                 }
 
@@ -163,42 +145,43 @@ public class Ejercicio3 {
 
         public static void main(String[] args) {
 
-                Scanner teclado = new Scanner(System.in);
+                Scanner entrada = new Scanner(System.in);
 
-                Queue<String> original = new ArrayDeque<>();
+                Queue<String> original = new LinkedList<>();
 
-                Queue<String> cortos = new ArrayDeque<>();
+                Queue<String> cortos = new LinkedList<>();
 
-                Queue<String> medios = new ArrayDeque<>();
+                Queue<String> medios = new LinkedList<>();
 
-                Queue<String> largos = new ArrayDeque<>();
+                Queue<String> largos = new LinkedList<>();
+
+                System.out.println("\n=========================================");
+                System.out.println("          CALL CENTER");
+                System.out.println("=========================================");
 
                 System.out.println(
-                                "Ingrese nombres de clientes.");
+                                "\nIngrese los nombres.");
                 System.out.println(
-                                "Ingrese FIN para terminar.");
+                                "Escriba FIN para terminar.");
 
                 String nombre;
 
                 do {
 
-                        System.out.print("Nombre: ");
+                        System.out.print(
+                                        "\nNombre: ");
 
-                        nombre = teclado.nextLine();
+                        nombre = entrada.nextLine();
 
-                        if (!nombre.equalsIgnoreCase("FIN")) {
+                        if (!nombre.equalsIgnoreCase("FIN")
+                                        && !nombre.trim().isEmpty()) {
 
-                                if (!nombre.trim().isEmpty()) {
-
-                                        original.add(nombre);
-                                }
+                                original.add(nombre);
                         }
 
                 } while (!nombre.equalsIgnoreCase("FIN"));
 
-                /*
-                 * Dividimos las colas.
-                 */
+                // Dividimos las colas
                 dividirColas(
                                 original,
                                 cortos,
@@ -211,63 +194,59 @@ public class Ejercicio3 {
                 System.out.println(original);
 
                 System.out.println(
-                                "\nCOLA CORTOS:");
+                                "\n--- CLIENTES CORTOS ---");
 
                 System.out.println(cortos);
 
                 System.out.println(
-                                "Cantidad: " + contar(cortos));
+                                "Cantidad: "
+                                                + cortos.size());
 
                 System.out.println(
                                 "Nombre más largo: "
                                                 + nombreMasLargo(cortos));
 
                 System.out.println(
-                                "\nCOLA MEDIOS:");
+                                "\n--- CLIENTES MEDIOS ---");
 
                 System.out.println(medios);
 
                 System.out.println(
-                                "Cantidad: " + contar(medios));
+                                "Cantidad: "
+                                                + medios.size());
 
                 System.out.println(
                                 "Nombre más largo: "
                                                 + nombreMasLargo(medios));
 
                 System.out.println(
-                                "\nCOLA LARGOS:");
+                                "\n--- CLIENTES LARGOS ---");
 
                 System.out.println(largos);
 
                 System.out.println(
-                                "Cantidad: " + contar(largos));
+                                "Cantidad: "
+                                                + largos.size());
 
                 System.out.println(
                                 "Nombre más largo: "
                                                 + nombreMasLargo(largos));
 
-                /*
-                 * Unimos las tres colas.
-                 */
                 Queue<String> unificada = unirColas(
                                 cortos,
                                 medios,
                                 largos);
 
                 System.out.println(
-                                "\nCOLA UNIFICADA:");
+                                "\n--- COLA UNIFICADA ---");
 
                 System.out.println(unificada);
 
-                /*
-                 * Comprobamos que las colas originales
-                 * siguen teniendo sus elementos.
-                 */
                 System.out.println(
-                                "\nCola original después de los recorridos:");
+                                "\nCola original después del recorrido:");
 
                 System.out.println(original);
 
-                teclado.close();
+                entrada.close();
         }
 }

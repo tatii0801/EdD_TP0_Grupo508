@@ -4,6 +4,73 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
 
+/*
+ * ============================================================
+ * ESTRUCTURA DE DATOS
+ * TRABAJO PRÁCTICO N° 4 - CICLO 2026
+ * TEMA: COLA (QUEUE)
+ * ============================================================
+ *
+ * EJERCICIO 4 - TICKETS DE SOPORTE
+ *
+ * ENUNCIADO:
+ *
+ * Se dispone de una cola de tickets de soporte.
+ *
+ * Cada Ticket posee:
+ *
+ * - idTicket
+ * - departamento
+ * - nivelUrgencia de 1 a 5
+ *
+ * Departamentos:
+ *
+ * - Redes
+ * - Software
+ * - Hardware
+ *
+ * Se debe:
+ *
+ * A) Crear una nueva cola con los tickets de un departamento.
+ * B) Calcular el promedio de urgencia.
+ * C) Obtener el primer ticket crítico, nivel 5.
+ * D) Crear un arreglo con los IDs de urgencia 4 o 5.
+ *
+ * La cola original debe quedar sin modificaciones.
+ *
+ * ============================================================
+ *
+ * PREGUNTAS Y RESPUESTAS
+ * ============================================================
+ *
+ * a) ¿Cómo se crea un arreglo si no conocemos su tamaño?
+ *
+ * RESPUESTA:
+ * Primero contamos los elementos que cumplen la condición.
+ * Después creamos el arreglo con ese tamaño.
+ *
+ *
+ * b) ¿Qué sucede si no existe ningún ticket de nivel 5?
+ *
+ * RESPUESTA:
+ * Se devuelve null y se informa que no existe un ticket crítico.
+ *
+ *
+ * c) ¿Se puede modificar un objeto mientras recorremos una cola?
+ *
+ * RESPUESTA:
+ * Sí, porque la cola contiene referencias a los objetos.
+ *
+ *
+ * d) ¿Por qué se utilizan dos recorridos para el arreglo?
+ *
+ * RESPUESTA:
+ * El primer recorrido permite conocer la cantidad exacta de
+ * elementos. El segundo permite cargar el arreglo.
+ *
+ * ============================================================
+ */
+
 public class Ejercicio4 {
 
     public static void main(String[] args) {
