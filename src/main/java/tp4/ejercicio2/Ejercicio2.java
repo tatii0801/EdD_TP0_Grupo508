@@ -7,95 +7,92 @@ import java.util.Scanner;
  * EJERCICIO 2 - COLA CIRCULAR
  * ============================================================
  *
- * Enunciado:
+ * ENUNCIADO:
  *
  * Implementar una Cola Circular utilizando un arreglo.
  *
- * La cola debe tener tamaño fijo y utilizar los índices de
- * frente y final de manera circular.
+ * La cola tendrá un tamaño fijo.
  *
- * Se utilizará la cola para almacenar códigos de documentos.
+ * Se utilizará para almacenar códigos de documentos.
  *
- * Varios impresores toman el primer documento disponible.
+ * Los códigos pares tienen prioridad alta y se envían a una
+ * segunda cola para impresión a color.
  *
- * Si el código es PAR:
- *     - Tiene prioridad alta.
- *     - Se envía a una segunda cola de impresión a color.
- *
- * Si el código es IMPAR:
- *     - Se imprime en blanco y negro.
- *     - Se descarta.
+ * Los códigos impares se imprimen en blanco y negro y se
+ * descartan.
  *
  * Se debe:
  *
  * - Procesar los documentos.
  * - Mostrar los documentos enviados a color.
  * - Mostrar los documentos descartados.
- * - Contar los documentos pares enviados a color.
+ * - Contar los documentos enviados a color.
  *
  * ============================================================
  *
- * PREGUNTAS
+ * PREGUNTAS Y RESPUESTAS
+ * ============================================================
  *
- * a) ¿Qué ventaja tiene una cola circular?
+ * a) ¿Cuál es la ventaja de una cola circular?
  *
  * RESPUESTA:
- * Permite reutilizar las posiciones del arreglo sin tener que
- * desplazar todos los elementos después de cada eliminación.
+ * Permite reutilizar las posiciones del arreglo sin desplazar
+ * todos los elementos.
  *
  *
  * b) Si el tamaño es 5 y el frente está en la posición 4,
- *    ¿qué posición ocupa el nuevo frente después de desencolar?
+ *    ¿cuál será el nuevo frente?
  *
  * RESPUESTA:
- * La posición 0.
+ * Será la posición 0.
  *
- * Se utiliza:
+ * Se calcula:
  *
  * (frente + 1) % capacidad
  *
  *
- * c) ¿Por qué no desplazar todos los elementos?
+ * c) ¿Por qué no se desplazan los elementos?
  *
  * RESPUESTA:
- * Porque desplazar elementos puede requerir recorrer varias
- * posiciones. La cola circular permite realizar el avance
- * utilizando índices y resulta más eficiente.
+ * Porque la cola circular utiliza índices que avanzan de manera
+ * circular y permite realizar las operaciones de forma más
+ * eficiente.
  *
  * ============================================================
  */
 
 /*
- * Clase ColaCircular.
- *
- * Se implementa con un arreglo.
+ * ============================================================
+ * CLASE COLA CIRCULAR
+ * ============================================================
  */
+
 class ColaCircular {
 
     private int[] datos;
 
     private int frente;
+
     private int fin;
+
     private int cantidad;
 
-    /*
-     * Constructor.
-     */
     public ColaCircular(int capacidad) {
 
         datos = new int[capacidad];
 
         frente = 0;
+
         fin = 0;
+
         cantidad = 0;
     }
 
-    /*
-     * Agrega un elemento a la cola.
-     */
+    // Agregar elemento
     public boolean encolar(int valor) {
 
         if (estaLlena()) {
+
             return false;
         }
 
@@ -108,13 +105,13 @@ class ColaCircular {
         return true;
     }
 
-    /*
-     * Elimina y devuelve el elemento del frente.
-     */
+    // Sacar elemento
     public int desencolar() {
 
         if (estaVacia()) {
-            throw new RuntimeException("La cola está vacía.");
+
+            throw new RuntimeException(
+                    "La cola está vacía.");
         }
 
         int valor = datos[frente];
@@ -126,58 +123,39 @@ class ColaCircular {
         return valor;
     }
 
-    /*
-     * Indica si la cola está vacía.
-     */
     public boolean estaVacia() {
 
         return cantidad == 0;
     }
 
-    /*
-     * Indica si la cola está llena.
-     */
     public boolean estaLlena() {
 
         return cantidad == datos.length;
     }
 
-    /*
-     * Devuelve el tamaño actual.
-     */
     public int tamanio() {
 
         return cantidad;
     }
 
-    /*
-     * Devuelve la capacidad.
-     */
-    public int capacidad() {
-
-        return datos.length;
-    }
-
-    /*
-     * Permite copiar la cola sin modificar la original.
-     */
+    // Copia la cola sin modificarla
     public ColaCircular copiar() {
 
-        ColaCircular copia = new ColaCircular(datos.length);
+        ColaCircular copia = new ColaCircular(
+                datos.length);
 
         for (int i = 0; i < cantidad; i++) {
 
-            int posicion = (frente + i) % datos.length;
+            int posicion = (frente + i)
+                    % datos.length;
 
-            copia.encolar(datos[posicion]);
+            copia.encolar(
+                    datos[posicion]);
         }
 
         return copia;
     }
 
-    /*
-     * Muestra la cola.
-     */
     @Override
     public String toString() {
 
@@ -185,11 +163,13 @@ class ColaCircular {
 
         for (int i = 0; i < cantidad; i++) {
 
-            int posicion = (frente + i) % datos.length;
+            int posicion = (frente + i)
+                    % datos.length;
 
             texto += datos[posicion];
 
             if (i < cantidad - 1) {
+
                 texto += ", ";
             }
         }
@@ -204,56 +184,70 @@ public class Ejercicio2 {
 
     public static void main(String[] args) {
 
-        Scanner teclado = new Scanner(System.in);
+        Scanner entrada = new Scanner(System.in);
 
-        System.out.print(
-                "Ingrese el tamaño de la cola circular: ");
+        System.out.println("\n=========================================");
+        System.out.println("          COLA CIRCULAR");
+        System.out.println("=========================================");
 
-        int capacidad = teclado.nextInt();
+        // ==========================================
+        // PASO 1: TAMAÑO
+        // ==========================================
 
-        while (capacidad <= 0) {
+        int capacidad;
+
+        do {
 
             System.out.print(
-                    "Ingrese un tamaño mayor que 0: ");
+                    "\nIngrese el tamaño de la cola circular: ");
 
-            capacidad = teclado.nextInt();
-        }
+            capacidad = entrada.nextInt();
+
+            if (capacidad <= 0) {
+
+                System.out.println(
+                        "-> El tamaño debe ser mayor que 0.");
+            }
+
+        } while (capacidad <= 0);
 
         ColaCircular cola = new ColaCircular(capacidad);
 
-        /*
-         * Cargamos la cola hasta completar su capacidad.
-         */
+        // ==========================================
+        // PASO 2: CARGA
+        // ==========================================
+
         System.out.println(
-                "\nIngrese los códigos de los documentos:");
+                "\nIngrese los códigos:");
 
         for (int i = 0; i < capacidad; i++) {
 
             System.out.print(
                     "Código " + (i + 1) + ": ");
 
-            int codigo = teclado.nextInt();
+            int codigo = entrada.nextInt();
 
             cola.encolar(codigo);
         }
 
-        System.out.println("\nCola original:");
+        System.out.println(
+                "\nCola original:");
+
         System.out.println(cola);
 
-        /*
-         * Hacemos una copia para procesar los documentos.
-         *
-         * Así podemos demostrar que el recorrido de consulta
-         * no modifica la cola original.
-         */
+        // Hacemos una copia para procesar
         ColaCircular colaProcesar = cola.copiar();
 
         ColaCircular colaColor = new ColaCircular(capacidad);
 
         int descartados = 0;
 
+        // ==========================================
+        // PASO 3: PROCESAMIENTO
+        // ==========================================
+
         System.out.println(
-                "\nProcesamiento de documentos:");
+                "\nProcesando documentos:");
 
         while (!colaProcesar.estaVacia()) {
 
@@ -262,61 +256,63 @@ public class Ejercicio2 {
             if (codigo % 2 == 0) {
 
                 System.out.println(
-                        "Documento " + codigo
-                                + " -> impresión a COLOR.");
+                        "Documento "
+                                + codigo
+                                + " -> COLOR");
 
                 colaColor.encolar(codigo);
 
             } else {
 
                 System.out.println(
-                        "Documento " + codigo
-                                + " -> blanco y negro y descartado.");
+                        "Documento "
+                                + codigo
+                                + " -> BLANCO Y NEGRO "
+                                + "y descartado.");
 
                 descartados++;
             }
         }
 
+        // ==========================================
+        // PASO 4: RESULTADOS
+        // ==========================================
+
         System.out.println(
-                "\nCola de documentos a color:");
+                "\nCola de impresión a color:");
 
         System.out.println(colaColor);
 
-        /*
-         * Contamos los documentos pares.
-         */
-        int cantidadColor = colaColor.tamanio();
+        System.out.println(
+                "Cantidad de documentos a color: "
+                        + colaColor.tamanio());
 
         System.out.println(
-                "Cantidad de documentos enviados a color: "
-                        + cantidadColor);
+                "Cantidad de documentos descartados: "
+                        + descartados);
 
-        /*
-         * Procesamos la segunda cola.
-         */
+        // ==========================================
+        // PASO 5: PROCESAR SEGUNDA COLA
+        // ==========================================
+
         System.out.println(
-                "\nProcesando cola de impresión a color:");
+                "\nProcesando cola a color:");
 
         while (!colaColor.estaVacia()) {
 
             int codigo = colaColor.desencolar();
 
             System.out.println(
-                    "Imprimiendo documento: " + codigo);
+                    "Imprimiendo documento "
+                            + codigo);
         }
 
+        // La original se mantiene
         System.out.println(
-                "\nCantidad de documentos descartados: "
-                        + descartados);
-
-        /*
-         * La cola original no fue modificada.
-         */
-        System.out.println(
-                "\nCola original después de las consultas:");
+                "\nCola original:");
 
         System.out.println(cola);
 
-        teclado.close();
+        entrada.close();
     }
 }
