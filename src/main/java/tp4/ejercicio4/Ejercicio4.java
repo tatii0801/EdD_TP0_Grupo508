@@ -1,4 +1,4 @@
-package tp4;
+package tp4.ejercicio4;
 
 import java.util.LinkedList;
 import java.util.Queue;

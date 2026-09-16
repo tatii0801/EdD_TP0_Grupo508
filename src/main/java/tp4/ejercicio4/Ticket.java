@@ -1,4 +1,4 @@
-package tp4;
+package tp4.ejercicio4;
 
 public class Ticket {
     
