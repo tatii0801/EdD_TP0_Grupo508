@@ -1,31 +1,36 @@
 package tp3.ejercicio2;
 
 import java.util.Scanner;
-import java.util.Stack;
+
+import tp3.ejemplo.implementaciones.StackChar;
+import tp3.ejemplo.implementaciones.StackGenerica;
 
 /*
- * ENUNCIADO:
+ * ============================================================
+ * EJERCICIO 2 - INVERSIÓN DE MÚLTIPLOS DE 3
+ * ============================================================
  *
- * Dado un arreglo de números enteros, se desea invertir únicamente
- * los números que son múltiplos de 3.
+ * Dado un arreglo de números enteros, invertir únicamente
+ * los números que sean múltiplos de 3.
  *
- * Para la inversión se debe utilizar una pila y se debe mantener
- * el resto del arreglo sin modificaciones.
+ * Para realizar la inversión se debe utilizar una pila.
+ *
+ * Los números que no son múltiplos de 3 deben permanecer
+ * exactamente en la misma posición.
  *
  * Ejemplo:
  *
- * Arreglo original:
- * 4, 3, 7, 9, 12, 2, 15
+ * Original:
+ * 4 3 7 9 12 2 15
  *
  * Múltiplos de 3:
- * 3, 9, 12, 15
+ * 3 9 12 15
  *
  * Invertidos:
- * 15, 12, 9, 3
+ * 15 12 9 3
  *
  * Resultado:
- * 4, 15, 7, 12, 9, 2, 3
- *
+ * 4 15 7 12 9 2 3
  * ================================================================
  *
  * PREGUNTAS SOBRE EL PROBLEMA
@@ -69,7 +74,8 @@ public class Ejercicio2 {
     // Método que invierte los múltiplos de 3.
     public static void invertirMultiplosDeTres(int[] arreglo) {
 
-        Stack<Integer> pila = new Stack<>();
+        StackGenerica<Integer> pila = new StackGenerica<>();
+
 
         // Primero guardamos en la pila los múltiplos de 3.
         for (int i = 0; i < arreglo.length; i++) {
