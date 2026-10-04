@@ -408,4 +408,51 @@ public class SimpleLinkedList<ELEMENT>
 
         return eliminado.item;
     }
+
+    /*
+     * ========================================================
+     * EJERCICIO 10 - ELIMINAR ELEMENTOS PARES
+     * ========================================================
+     * Elimina todos los números pares de la lista modificando
+     * las referencias de los nodos de forma directa.
+     */
+    public void eliminarPares() {
+        // Caso Borde 1: Remoción sucesiva si el nodo cabeza (head) contiene un valor
+        // par
+        while (this.head != null && (int) this.head.item % 2 == 0) {
+            this.head = this.head.next;
+            this.count--;
+        }
+
+        // Si la lista se vació por completo tras limpiar la cabecera, se reajusta la
+        // cola (tail)
+        if (this.head == null) {
+            this.tail = null;
+            return;
+        }
+
+        // Caso General: Recorrido del cuerpo de la lista utilizando punteros en tándem
+        Node<ELEMENT> anterior = this.head;
+        Node<ELEMENT> actual = this.head.next;
+
+        while (actual != null) {
+            if ((int) actual.item % 2 == 0) {
+                // El nodo anterior saltea la referencia del nodo actual para excluirlo
+                anterior.next = actual.next;
+
+                // Caso Borde 2: Si el nodo eliminado era el último, reubicamos la cola (tail)
+                if (actual == this.tail) {
+                    this.tail = anterior;
+                }
+                this.count--;
+
+                // Avanzamos 'actual' al nuevo sucesor sin desplazar la referencia 'anterior'
+                actual = anterior.next;
+            } else {
+                // Si el elemento es impar, ambos punteros avanzan en paralelo
+                anterior = actual;
+                actual = actual.next;
+            }
+        }
+    }
 }
