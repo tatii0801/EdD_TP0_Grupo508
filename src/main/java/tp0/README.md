@@ -23,6 +23,26 @@ El trabajo tiene como objetivo realizar una auto-evaluación diagnóstica sobre 
 
 ---
 
+# Objetivo
+
+El objetivo de este trabajo práctico es realizar una auto-evaluación diagnóstica para medir los conocimientos previos en el desarrollo de algoritmos fundamentales y programación estructurada utilizando Java.
+
+Durante el desarrollo se trabajan conceptos como:
+
+- Variables y constantes
+- Tipos de datos primitivos (`int`, `double`, `boolean`)
+- Estructuras de control secuenciales
+- Estructuras de decisión condicional (`if`, `else if`, `else`, `switch`)
+- Estructuras de repetición iterativas (`while`, `do-while`, `for`)
+- Operadores aritméticos, lógicos y relacionales
+- Ingreso de datos por teclado mediante `Scanner`
+- Generación de valores numéricos con `Random`
+- Manipulación básica de cadenas con la clase `String`
+- Modularización de funciones en el archivo principal
+- Formateo de salidas por pantalla y consola
+
+---
+
 # 🛠️ Tecnologías Utilizadas
 
 - Java
