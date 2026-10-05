@@ -15,10 +15,8 @@ El objetivo de este proyecto es implementar, analizar y optimizar diferentes Tip
 **C5 - Grupo 508**
 
 - Nicolas Daniel Anachuri
-- Gaston Yamil Gregorio
 - Tatiana Valeria Nieva
 - Romina Ester Santos
-- Santiago Tintilay
 - Estefania Alejandra Trujillo
 
 ---
