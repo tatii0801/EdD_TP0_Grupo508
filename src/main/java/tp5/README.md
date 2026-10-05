@@ -1,142 +1,62 @@
-# Estructura de Datos - TP N° 5
+# EdD_Grupo508 - Estructura de Datos - TP5
 
-## Trabajo Práctico N° 5 - Ciclo 2026
+## 📝 Trabajo Práctico N° 5 - Listas (List)
 
-**Tema:** Listas  
-**Carrera:** Ingeniería Informática – Licenciatura en Sistemas  
-**Facultad:** Facultad de Ingeniería – Universidad Nacional de Jujuy  
+Trabajo Práctico desarrollado para la materia **Estructura de Datos**, correspondiente al ciclo 2026 de las carreras **Ingeniería Informática y Licenciatura en Sistemas** de la **Facultad de Ingeniería - Universidad Nacional de Jujuy**.
 
-## Integrantes
+El trabajo tiene como objetivo profundizar en el conocimiento, diseño y desarrollo del Tipo de Dato Abstracto (TDA) **Lista**, analizando sus diferentes variantes estructurales (Listas Simplemente Enlazadas, Doblemente Enlazadas y Listas Ordenadas) y la manipulación directa de punteros.
+
+### Java - List - LinkedList - Pointers - Memory Allocation - Git - GitHub
+
+---
+
+# 👥 Integrantes
+
+**C5 - Grupo 508**
 
 - Nicolas Daniel Anachuri
+- Gaston Yamil Gregorio
 - Tatiana Valeria Nieva
 - Romina Ester Santos
+- Santiago Tintilay
 - Estefania Alejandra Trujillo
 
-**Grupo:** C5 - Grupo 508
+---
+
+# Objetivo
+
+El objetivo de este trabajo práctico es profundizar en el análisis, diseño y codificación de las estructuras de datos dinámicas mediante las variantes del Tipo de Dato Abstracto (TDA) **Lista (List)**.
+
+Durante el desarrollo se trabajan conceptos como:
+
+- Listas simplemente enlazadas (`SimpleLinkedList`)
+- Listas doblemente enlazadas con punteros bidireccionales (`DoubleLinkedList`)
+- Inserción ordenada automática sobre estructuras dinámicas (`OrderedList`)
+- Manipulación e interconexión directa de nodos y punteros (`next` y `prev`)
+- Atributos de frontera estructurales (`head`, `tail` y contador `count`)
+- Abstracción de recorridos de solo lectura mediante la interfaz `Iterable` / `Iterator`
+- Patrón de diseño *Iterator* y bucles for-each para la inmutabilidad de datos
+- Análisis de casos borde (Estructuras vacías, mutaciones en extremos cabeza y cola)
+- Redireccionamiento coordinado mediante punteros en tándem (`anterior` y `actual`)
+- Implementación de TDAs derivados (Colas y Pilas enlazadas) compartiendo código base
+- Análisis asintótico de complejidad temporal (**Complejidad Big O**)
+- Administración automática de memoria dinâmica y recolección de basura (*Garbage Collector*)
 
 ---
 
-## Descripción
-
-En este trabajo práctico se desarrollan ejercicios relacionados con el uso de **Listas (List) en Java**.
-
-Se trabaja con las implementaciones lineales propuestas en clases (`SimpleLinkedList`, `DoubleLinkedList` y listas ordenadas), aplicando manipulación directa de punteros, operaciones de inserción, eliminación, filtrado, ordenamiento y reutilización de estructuras dinámicas.
-
----
-
-## Ejercicios
-
-### Ejercicio 1 - Inserción y eliminación por posición
-
-Se agregan métodos a la clase `SimpleLinkedList` para insertar y eliminar elementos en una posición específica ingresada por el usuario. 
-
-Se valida el correcto funcionamiento controlando los límites de la lista mediante un menú de opciones y una lista de objetos `Producto`.
-
----
-
-### Ejercicio 2 - Gestión de canciones y estadísticas
-
-Se utiliza una lista doblemente enlazada con objetos `Cancion` para obtener la canción más antigua y filtrar por artista. 
-
-Además, se genera una nueva lista doble ordenada de mayor a menor con objetos `EstadisticaArtista` que acumulan las duraciones totales de reproducción.
-
----
-
-### Ejercicio 3 - Intersección y unión de suscripciones
-
-Se crean dos listas simples con objetos `Suscripcion`. 
-
-El programa permite generar una lista con la intersección de usuarios comunes, contar las suscripciones totales de un usuario sumando ambas estructuras y realizar la unión de las dos listas ordenadas por fecha de inicio.
-
----
-
-### Ejercicio 4 - Gestor de tareas pendientes y futuras
-
-Se implementa la clase `GestorTareas` mediante una lista enlazada simple para administrar objetos `Tarea`. 
-
-Se desarrollan operaciones para agregar, completar, eliminar y listar tareas pendientes o futuras filtradas por un responsable específico.
-
----
-
-### Ejercicio 5 - Procesamiento de aspirantes y promedios
-
-Se administra una lista de objetos `Aspirante` calculando el promedio individual de sus tres notas. 
-
-El programa identifica al aspirante con el promedio más alto y genera de forma dinámica una nueva lista con los postulantes que aprobaron con una nota mayor o igual a 7.
-
----
-
-### Ejercicio 6 - Filtrado y ordenamiento de enteros aleatorios
-
-Se genera una lista con N números enteros aleatorios. 
-
-Se implementan métodos para agrupar los números negativos al principio y los positivos al final, sumar los elementos contenidos dentro de un rango numérico [A, B] e insertar los elementos de manera ordenada ascendente en una nueva lista.
-
----
-
-### Ejercicio 7 - Simulación de pedidos (Drive-Thru) con Queue
-
-Se codifica una implementación de la clase genérica `Queue` (Cola) utilizando internamente una lista del profesor. 
-
-Se simula una cola de pedidos, procesando la estructura para eliminar las cancelaciones (valores iguales a 0) manteniendo el orden original de llegada y calculando el promedio de las mesas válidas.
-
----
-
-### Ejercicio 8 - Duplicación de múltiplos de 3 con Stack
-
-Se codifica una implementación de la clase genérica `Stack` (Pila) utilizando la estructura de la lista base. 
-
-Se desarrolla un método externo que recorre la pila y duplica los valores que son múltiplos de 3, garantizando que el orden relativo del resto de los elementos de la estructura no se altere.
-
----
-
-### Ejercicio 9 - Análisis de soluciones (Suma de elementos)
-
-Se analizan y contrastan dos soluciones propuestas por estudiantes para obtener la suma de los elementos de una lista sin modificarla. 
-
-Se evalúa conceptualmente el uso del patrón *Iterator* (for-each) frente a la alteración estructural por rotación de nodos (`removeFirst` y `addLast`).
-
----
-
-### Ejercicio 10 - Depuración de código (eliminarPares)
-
-Se analiza línea por línea un método defectuoso diseñado para eliminar números pares manipulando los punteros directamente. 
-
-Se identifican errores críticos de saltos de nodos y excepciones `NullPointerException` en el nodo final (`tail`), y se provee la refactorización algorítmica correcta utilizando punteros en tándem (`anterior` y `actual`).
-
----
-
-## Conceptos utilizados
-
-Durante el trabajo se utilizan principalmente:
-
-- Listas simplemente enlazadas (`SimpleLinkedList`).
-- Listas doblemente enlazadas (`DoubleLinkedList`).
-- Listas ordenadas (`LinkedOrderedList`).
-- Estructuras lineales derivadas (`Queue` y `Stack`).
-- Manipulación directa de punteros (`head`, `tail`, `next`, `prev`).
-- Patrón de diseño *Iterator* (recorridos for-each).
-- Complejidad temporal y eficiencia algorítmica (O(1) y O(n)).
-- Gestión de memoria dinámica y Garbage Collector.
-- Casos borde (validación de rangos, listas vacías y extremos).
-- Modularización de software.
-- Carga de datos aleatorios y control del objeto `Scanner`.
-
----
-
-## Tecnologías
+# 🛠️ Tecnologías Utilizadas
 
 - Java
-- Maven
+- Listas Genéricas (TDA SimpleLinkedList / DoubleLinkedList)
+- Colas y Pilas Dinámicas (Queue / Stack)
+- Scanner & Randomization Lógica
 - Visual Studio Code
 - Git
 - GitHub
-- Script de automatización (`run.bat`)
 
 ---
 
-## Estructura del proyecto
+# 📂 Estructura del Proyecto
 
 ```text
 src
@@ -190,3 +110,49 @@ src
             └── 10_Ejercicio10
                 └── Principal10.java
 ```
+
+---
+
+# 📜 About
+
+• Trabajo Práctico N° 5 - Listas (List)  
+• Materia: Estructura de Datos  
+• Carreras: Ingeniería Informática - Licenciatura en Sistemas  
+• Facultad: Facultad de Ingeniería - Universidad Nacional de Jujuy  
+• Comisión: C5  
+• Grupo: 508  
+• Ciclo: 2026  
+
+---
+
+# 📝 Detalle de los Ejercicios
+
+### Ejercicio 1 - Inserción y eliminación por posición en SimpleLinkedList
+Se agregan métodos a la clase `SimpleLinkedList` para insertar y eliminar elementos en posiciones específicas indicadas por el usuario. Se valida controlando los límites de la estructura mediante un menú de opciones y una lista de objetos `Producto`.
+
+### Ejercicio 2 - Gestión de canciones y lista doblemente ordenada de estadísticas
+Se utiliza una lista doblemente enlazada con objetos `Cancion` para obtener la pista más antigua y filtrar por artista. Además, se genera una nueva lista doble ordenada de mayor a menor con objetos `EstadisticaArtista` que acumulan los segundos totales.
+
+### Ejercicio 3 - Intersección y unión ordenada de suscripciones
+Se crean dos listas simples con objetos `Suscripcion`. El programa genera una lista con la intersección de usuarios comunes, cuenta las suscripciones totales de un usuario sumando ambas estructuras y realiza la unión ordenada de las dos listas por fecha de inicio.
+
+### Ejercicio 4 - Gestor de tareas pendientes y futuras
+Se implementa la clase `GestorTareas` mediante una lista enlazada simple para administrar objetos `Tarea`. Se desarrollan operaciones para agregar, completar, eliminar y listar tareas pendientes o futuras filtradas por un responsable específico.
+
+### Ejercicio 5 - Procesamiento de aspirantes y promedios individuales
+Se administra una lista de objetos `Aspirante` calculando el promedio individual de sus tres notas. El programa identifica al aspirante con el promedio más alto y genera de forma dinámica una nueva lista con los postulantes aprobados con nota mayor o igual a 7.
+
+### Ejercicio 6 - Filtrado y ordenamiento de enteros aleatorios
+Se genera una lista con N números enteros aleatorios. Se implementan métodos para agrupar los números negativos al principio y los positivos al final, sumar los elementos contenidos dentro de un rango numérico [A, B] e insertar los elementos ordenados de forma ascendente.
+
+### Ejercicio 7 - Simulación de pedidos (Drive-Thru) con Queue enlazada
+Se codifica una implementación de la clase genérica `Queue` utilizando internamente una lista genérica. Se simula una cola de pedidos procesando la estructura para eliminar las cancelaciones (valores iguales a 0) manteniendo el orden original de llegada.
+
+### Ejercicio 8 - Duplicación de múltiplos de 3 con Stack enlazada
+Se codifica una implementación de la clase genérica `Stack` utilizando la estructura de una lista genérica. Se desarrolla un método externo que recorre la pila y duplica los valores que son múltiplos de 3, garantizando que el orden relativo de los demás elementos no se altere.
+
+### Ejercicio 9 - Análisis de soluciones (Suma de elementos)
+Se analizan y contrastan dos soluciones propuestas por estudiantes para obtener la suma de los elementos de una lista sin modificarla. Se evalúa conceptualmente el uso del patrón *Iterator* (for-each) frente a la alteración estructural por rotación de nodos.
+
+### Ejercicio 10 - Depuración de código (eliminarPares)
+Se analiza línea por línea un método defectuoso diseñado para eliminar números pares manipulando los punteros directamente. Se identifican errores críticos de saltos de nodos y excepciones `NullPointerException` en la cola, y se provee la refactorización algorítmica correcta con punteros en tándem.

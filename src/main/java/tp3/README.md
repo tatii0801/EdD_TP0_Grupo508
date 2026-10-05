@@ -1,12 +1,18 @@
-# Estructura de Datos - TP N° 3
+# EdD_Grupo508 - Estructura de Datos - TP3 
 
-## Trabajo Práctico N° 3 - Ciclo 2026
+## 📝 Trabajo Práctico N° 3 - Pilas (Stack)
 
-**Tema:** Pilas  
-**Carrera:** Ingeniería Informática – Licenciatura en Sistemas  
-**Facultad:** Facultad de Ingeniería – Universidad Nacional de Jujuy  
+Trabajo Práctico desarrollado para la materia **Estructura de Datos**, correspondiente al ciclo 2026 de las carreras **Ingeniería Informática y Licenciatura en Sistemas** de la **Facultad de Ingeniería - Universidad Nacional de Jujuy**.
 
-## Integrantes
+El trabajo tiene como objetivo aplicar el Tipo de Dato Abstracto (TDA) **Pila (Stack)** utilizando el lenguaje **Java**, respetando el principio LIFO (Last In, First Out) y las reglas de procesamiento mediante el uso de estructuras auxiliares sin alterar el orden original de los datos.
+
+### Java - Stack - Pilas Auxiliares - Encapsulamiento - Estructuras de Control - Git
+
+---
+
+# 👥 Integrantes
+
+**C5 - Grupo 508**
 
 - Nicolas Daniel Anachuri
 - Gaston Yamil Gregorio
@@ -15,155 +21,102 @@
 - Santiago Tintilay
 - Estefania Alejandra Trujillo
 
-**Grupo:** C5 - Grupo 508
+---
+
+# Objetivo
+
+El objetivo de este trabajo práctico es estudiar, diseñar y utilizar el Tipo de Dato Abstracto (TDA) **Pila (Stack)** utilizando una política de acceso restrictivo LIFO (Last In, First Out) en Java.
+
+Durante el desarrollo se trabajan conceptos como:
+
+- Estructuras de datos lineales y dinámicas
+- Operaciones primitivas de apilado (`push()`)
+- Operaciones de desapilado (`pop()`) y lectura de cima (`peek()`)
+- Control de desbordamiento y estados mediante `isEmpty()` y `size()`
+- Patrón de procesamiento destructivo mediante desapilado secuencial
+- Uso de Pilas Auxiliares transitorias para la preservación de datos
+- Restauración del orden relativo original de los elementos
+- Inversión de secuencias lógicas utilizando la propiedad nativa de la pila
+- Filtrado, búsqueda y mutación de atributos sobre objetos encolados
+- Abstracción de tipos mediante colecciones genéricas
+
 
 ---
 
-## Descripción
-
-En este trabajo práctico se desarrollan ejercicios relacionados con el uso de **Pilas (Stack) en Java**.
-
-Se trabaja con la implementación de Stack propuesta en clases y se aplican operaciones de carga, extracción, búsqueda, modificación y reorganización de elementos.
-
-También se utilizan pilas de números enteros y pilas de objetos.
-
----
-
-## Ejercicios
-
-### Ejercicio 1 - Separación de números
-
-Se generan números aleatorios y se cargan en una pila.
-
-Luego se separan los números positivos y negativos en dos pilas diferentes y se obtiene el valor máximo y mínimo de cada una.
-
-La pila original debe mantenerse sin modificaciones.
-
----
-
-### Ejercicio 2 - Inversión de múltiplos de 3
-
-Se trabaja con un arreglo de números enteros.
-
-Utilizando una pila, se invierte únicamente el orden de los números que son múltiplos de 3, manteniendo el resto de los elementos sin modificaciones.
-
----
-
-### Ejercicio 3 - Operaciones sobre una pila
-
-Se genera una pila de números enteros aleatorios y se implementan diferentes métodos para:
-
-- Eliminar divisores exactos de un número X.
-- Reemplazar números impares por 0.
-- Contar elementos mayores al elemento de la cima.
-- Intercambiar la cima con el elemento de la mitad de la pila.
-
----
-
-### Ejercicio 4 - Gestión de tareas
-
-Se crea la clase `Tarea` con los atributos:
-
-- ID de tarea.
-- Prioridad.
-- Descripción.
-
-Las tareas pendientes se almacenan en una pila.
-
-El programa permite:
-
-- Agregar tareas.
-- Buscar tareas por ID.
-- Contar tareas de prioridad Alta.
-- Eliminar tareas según su prioridad.
-
----
-
-### Ejercicio 5 - Gestión de pedidos
-
-Se crea la clase `Pedido` con:
-
-- ID del pedido.
-- Monto.
-- Estado de pago.
-
-Se utiliza una pila para almacenar los pedidos.
-
-El programa permite:
-
-- Agregar pedidos.
-- Marcar pedidos como pagados.
-- Calcular la deuda total.
-- Eliminar los pedidos que ya fueron pagados.
-
----
-
-### Ejercicio 6 - Pila a arreglo
-
-Se implementan y analizan dos soluciones para convertir una pila de enteros en un arreglo.
-
-El arreglo debe mantener el mismo orden en que los elementos salen de la pila y la pila original debe conservarse sin modificaciones.
-
----
-
-### Ejercicio 7 - Gestión de productos
-
-Se analiza y corrige una solución para buscar un producto dentro de una pila y aplicarle un descuento del 10%.
-
-Se trabaja especialmente con:
-
-- Comparación de `String`.
-- Encapsulamiento.
-- Pilas auxiliares.
-- Restauración del orden original.
-
----
-
-## Conceptos utilizados
-
-Durante el trabajo se utilizan principalmente:
-
-- Pilas `Stack`.
-- Operaciones `push()` y `pop()`.
-- `peek()`.
-- `isEmpty()`.
-- `size()`.
-- Pilas auxiliares.
-- Arreglos.
-- Objetos.
-- Clases.
-- Métodos.
-- Encapsulamiento.
-- Búsqueda de elementos.
-- Recorridos.
-- Contadores y acumuladores.
-- Números aleatorios.
-- Validación de datos.
-- `Scanner`.
-
----
-
-## Tecnologías
+# 🛠️ Tecnologías Utilizadas
 
 - Java
-- Maven
+- Stack (TDA)
+- Scanner
+- Random
 - Visual Studio Code
 - Git
 - GitHub
 
 ---
 
-## Estructura del proyecto
+# 📂 Estructura del Proyecto
 
 ```text
 src
 └── main
     └── java
         └── tp3
+            ├── ejemplo\implementaciones
+            │   ├── Main.java
+            │   ├── StackChar.java
+            │   └── StackGenerica.java
             ├── ejercicio1
+            │   └── Ejercicio1.java
             ├── ejercicio2
+            │   └── Ejercicio2.java
             ├── ejercicio3
+            │   └── Ejercicio3.java
             ├── ejercicio4
+            │   ├── Ejercicio4.java
+            │   └── Tarea.java
             ├── ejercicio5
+            │   └── Pedido.java
             ├── ejercicio6
+            │   └── Ejercicio6.java
             └── ejercicio7
+                ├── Ejercicio7.java
+                └── Producto.java
+```
+
+---
+
+# 📜 About
+
+• Trabajo Práctico N° 3 - Pilas (Stack)  
+• Materia: Estructura de Datos  
+• Carreras: Ingeniería Informática - Licenciatura en Sistemas  
+• Facultad: Facultad de Ingeniería - Universidad Nacional de Jujuy  
+• Comisión: C5  
+• Grupo: 508  
+• Ciclo: 2026  
+
+---
+
+# 📝 Detalle de los Ejercicios
+
+### Ejercicio 1 - Separación de números positivos y negativos
+Se generan 15 números aleatorios entre -20 y 20 y se cargan en una pila. Luego se separan los números positivos y negativos en dos pilas diferentes calculando el valor máximo y mínimo de cada una, manteniendo la pila original sin modificaciones.
+
+### Ejercicio 2 - Inversión de números múltiplos de 3
+Dado un arreglo de números enteros, se utiliza una estructura de tipo pila para invertir únicamente el orden de aquellos elementos que son múltiplos de 3, manteniendo el resto del arreglo en su posición original.
+
+### Ejercicio 3 - Operaciones aritméticas y modificaciones sobre una pila
+Se genera una pila de números enteros aleatorios y se implementan métodos externos para eliminar divisores exactos de un número X, reemplazar elementos impares por 0, contar valores mayores a la cima e intercambiar el elemento del extremo con el nodo central.
+
+### Ejercicio 4 - Gestión de tareas pendientes por prioridad
+Se crea la clase `Tarea` con ID, prioridad y descripción. Las tareas pendientes se almacenan en una pila y se desarrollan algoritmos para agregar elementos, buscar por ID, contar tareas de prioridad alta y remover nodos según la prioridad indicada sin alterar el orden.
+
+### Ejercicio 5 - Simulación de procesamiento de deudas y pedidos
+Se diseña la clase `Pedido` que contiene monto y estado de pago. El programa almacena los registros en una pila, permitiendo marcar pedidos como pagados de forma remota, calcular la deuda acumulada total y vaciar físicamente los elementos ya abonados de la estructura.
+
+### Ejercicio 6 - Análisis comparativo de conversión de pila a arreglo
+Se evalúan dos propuestas para transformar una pila de enteros en un arreglo estático respetando el orden de salida de la cima. Se analiza el método nativo `toArray()` (Solución A) frente al desapilado manual controlado por estructuras auxiliares (Solución B).
+
+### Ejercicio 7 - Depuración de búsquedas y descuentos en productos
+Se analiza y corrige una solución propuesta por un alumno para aplicar un descuento del 10% a un objeto `Producto` mediante su ID. Se reescribe la lógica resolviendo problemas de comparación de `String` (`==` por `.equals()`) y controlando la restauración total de la estructura.
