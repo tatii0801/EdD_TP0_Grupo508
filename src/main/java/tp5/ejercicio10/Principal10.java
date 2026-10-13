@@ -2,6 +2,50 @@ package tp5.ejercicio10;
 
 import tp5.Base_Profesor.SimpleLinkedList;
 
+/*
+ * =============================================================================
+ * FACULTAD DE INGENIERÍA – UNIVERSIDAD NACIONAL DE JUJUY
+ * ASIGNATURA: ESTRUCTURA DE DATOS - CICLO 2026
+ * TRABAJO PRÁCTICO N° 5: TIPO DE DATO ABSTRACTO (TDA) LISTA
+ * 
+ * INGENIERÍA INFORMÁTICA – LICENCIATURA EN SISTEMAS
+ * =============================================================================
+ * 
+ * -----------------------------------------------------------------------------
+ * 📝 CONSIGNA COMPLETA
+ * -----------------------------------------------------------------------------
+ * Ejercicio 10: Depuración de Código (Análisis de errores internos)
+ * Enunciado:
+ * Se desea agregar un método a la clase SimpleLinkedList (asumiendo que la lista 
+ * almacena enteros) que elimine todos los números pares de la estructura. 
+ * El método debe manipular los punteros next de los nodos directamente.
+ * 
+ * Preguntas sobre el problema:
+ * a) Analice el código línea por línea e identifique los errores conceptuales 
+ *    sobre el manejo de punteros y nodos.
+ * b) Argumente por qué constituyen errores. (Pista: Hay un error garrafal cuando 
+ *    el primer elemento (la head) es par, un error de excepción si el nodo par 
+ *    es el último de la lista, y un error de salto de nodos al avanzar actual 
+ *    después de haber hecho una eliminación).
+ * c) ¿La solución responde completamente a lo solicitado por la consigna? 
+ *    ¿Qué le pasa a la lista si ejecutamos este código con los elementos 2, 4 y 5?
+ * 
+ * -----------------------------------------------------------------------------
+ * ❌ CÓDIGO ORIGINAL QUE DAN EN EL ENUNCIADO
+ * -----------------------------------------------------------------------------
+ * public void eliminarPares() {
+ *     if (this.count == 0) return;
+ *     Node<ELEMENT> actual = this.head;
+ *     while (actual != null) {
+ *         if ((int) actual.item % 2 == 0) {
+ *             // Si es par, saltea el siguiente nodo
+ *             actual.next = actual.next.next;
+ *             this.count--;
+ *         }
+ *         actual = actual.next;
+ *     }
+ * }
+ */
 
 public class Principal10 {
 
